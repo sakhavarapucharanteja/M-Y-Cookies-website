@@ -7,6 +7,8 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+import logo from "./images/MY_Logo.png";
+
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import About from "./pages/About";
@@ -37,28 +39,52 @@ function Layout() {
           className="logo"
           onClick={() => setMenuOpen(false)}
         >
-          <div className="logo-circle">M&Y</div>
+          {/* LOGO IMAGE */}
+          <div className="logo-circle">
+            <img
+              src={logo}
+              alt="M & Y Home Made Foods Logo"
+            />
+          </div>
 
+          {/* LOGO TEXT */}
           <div>
             <h2>M & Y</h2>
             <span>HOME MADE FOODS</span>
           </div>
         </Link>
 
-        <div className={`nav-links ${menuOpen ? "active" : ""}`}>
-          <Link to="/" onClick={() => setMenuOpen(false)}>
+        {/* NAVIGATION LINKS */}
+        <div
+          className={`nav-links ${
+            menuOpen ? "active" : ""
+          }`}
+        >
+          <Link
+            to="/"
+            onClick={() => setMenuOpen(false)}
+          >
             Home
           </Link>
 
-          <Link to="/products" onClick={() => setMenuOpen(false)}>
+          <Link
+            to="/products"
+            onClick={() => setMenuOpen(false)}
+          >
             Products
           </Link>
 
-          <Link to="/about" onClick={() => setMenuOpen(false)}>
+          <Link
+            to="/about"
+            onClick={() => setMenuOpen(false)}
+          >
             About Us
           </Link>
 
-          <Link to="/contact" onClick={() => setMenuOpen(false)}>
+          <Link
+            to="/contact"
+            onClick={() => setMenuOpen(false)}
+          >
             Contact
           </Link>
 
@@ -71,6 +97,7 @@ function Layout() {
           </button>
         </div>
 
+        {/* MOBILE MENU BUTTON */}
         <button
           className="menu-btn"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -79,12 +106,29 @@ function Layout() {
         </button>
       </nav>
 
+      {/* WEBSITE ROUTES */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
+
+        <Route
+          path="/products"
+          element={<Products />}
+        />
+
+        <Route
+          path="/about"
+          element={<About />}
+        />
+
+        <Route
+          path="/contact"
+          element={<Contact />}
+        />
+
+        <Route
+          path="/product/:id"
+          element={<ProductDetail />}
+        />
       </Routes>
     </>
   );

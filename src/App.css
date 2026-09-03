@@ -1450,3 +1450,40 @@ footer {
   }
 }
 
+.detail-price {
+  margin: 28px 0;
+}
+
+.price-title {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 14px;
+  color: #777;
+}
+
+.price-options {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.price-option {
+  min-width: 120px;
+  padding: 14px 18px;
+  border: 1px solid #e3d7d1;
+  border-radius: 12px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.price-weight {
+  font-size: 14px;
+  color: #777;
+}
+
+.price-amount {
+  font-size: 24px;
+  color: #87331f;
+}

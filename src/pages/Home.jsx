@@ -304,38 +304,6 @@ function Home() {
           </a>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer>
-        <div className="footer-brand">
-          <div className="logo-circle">M&Y</div>
-
-          <div>
-            <h3>M & Y Home Made Foods</h3>
-            <p>Good Food ❤️ Good Mood ❤️ Homemade is the Best!</p>
-          </div>
-        </div>
-
-        <div className="footer-location">
-          <MapPin size={18} />
-          Hyderabad, India
-        </div>
-
-        <div className="footer-social">
-          <a
-            href="https://www.instagram.com/m_y_home_made_foods"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <FaInstagram size={20} />
-          </a>
-
-          <button onClick={openWhatsApp} aria-label="WhatsApp">
-            <MessageCircle size={20} />
-          </button>
-        </div>
-      </footer>
     </div>
   );
 }

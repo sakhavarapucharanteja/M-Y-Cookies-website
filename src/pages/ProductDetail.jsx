@@ -8,20 +8,28 @@ import {
   Phone,
 } from "lucide-react";
 
-import ragiLaddu from "../images/ragi-laddu.png";
-import oatsLaddu from "../images/oats-laddu.png";
-import milletLaddu from "../images/millet-laddu.png";
-import dryFruitLaddu from "../images/dry-fruit-laddu.png";
+import ragiLaddu from "../images/ragi-laddu-140kb.png";
+import oatsLaddu from "../images/oats-laddu-140kb.png";
+import milletLaddu from "../images/millet-laddu-140kb.png";
+import dryFruitLaddu from "../images/dry-fruit-laddu-140kb.jpg";
 
 // DRY FRUITS CHOCOLATE IMAGES
-import dryFruitchocolateMango from "../images/Dry-fruit-chocolate-mango.png";
-import dryFruitchocolateStrawberry from "../images/Dry-fruit-chocolate-strawberry.png";
-import dryFruitchocolatechocolate from "../images/Dry-fruit-chocolate-choco.png";
+import kunafa from "../images/kunafa-140kb.png";
+import dryFruitchocolateMango from "../images/Dry-fruit-chocolate-mango-140kb.jpg";
+import dryFruitchocolateStrawberry from "../images/Dry-fruit-chocolate-strawberry-140kb.jpg";
+import dryFruitchocolatechocolate from "../images/Dry-fruit-chocolate-choco-140kb.jpg";
+
+/* NEW PRODUCT IMAGES */
+import dryFruitsDonut from "../images/dry-fruits-donut-140kb.png";
+import datesChocolate from "../images/dates-chocolate-140kb.png";
+import paniPuri from "../images/pani-puri-140kb.png";
 
 const whatsappNumber = "918341921521";
 
 const products = [
+
   // HEALTHY LADDUS
+
   {
     id: "ragi-laddu",
     name: "Ragi Laddu",
@@ -112,17 +120,19 @@ const products = [
 
 
   // CHOCOLATES
+
   {
     id: "kunafa-chocolate",
     name: "Kunafa Chocolate",
     category: "Chocolates",
-    price: "₹249",
-    emoji: "🍫",
+    price: "₹100 pieces 3",
+    image: kunafa,
     description: "A delicious fusion of kunafa and chocolate.",
   },
 
 
   // DRY FRUITS CHOCOLATES
+
   {
     id: "dry-fruits-chocolate-mango",
     name: "Dry Fruits Chocolate with Mango Flavor",
@@ -152,6 +162,46 @@ const products = [
     description:
       "Rich and delicious dry fruits chocolate with an extra chocolate flavor.",
   },
+
+
+  // DRY FRUITS DONUT
+
+  {
+    id: "dry-fruits-donut",
+    name: "Dry Fruits Donut",
+    category: "Dry Fruits Chocolates",
+    price: "₹80  piece",
+    image: dryFruitsDonut,
+    description:
+      "Delicious chocolate dry fruits donuts topped with colourful sprinkles.",
+  },
+
+
+  // DATES CHOCOLATE
+
+  {
+    id: "dates-chocolate",
+    name: "Dates Chocolate",
+    category: "Dry Fruits Chocolates",
+    price: "₹100  pieces 5",
+    image: datesChocolate,
+    description:
+      "Rich dates coated with delicious chocolate and topped with crunchy dry fruits.",
+  },
+
+
+  // SNACKS
+
+  {
+    id: "pani-puri",
+    name: "Pani Puri",
+    category: "Snacks",
+    price: "₹50 single plate",
+    image: paniPuri,
+    description:
+      "Fresh and delicious homemade pani puri with tasty filling and flavourful pani.",
+  },
+
 ];
 
 

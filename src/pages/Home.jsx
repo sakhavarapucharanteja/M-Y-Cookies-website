@@ -10,10 +10,10 @@ import {
 import { FaInstagram } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
-import ragiLaddu from "../images/ragi-laddu.png";
-import oatsLaddu from "../images/oats-laddu.png";
-import milletLaddu from "../images/millet-laddu.png";
-import dryFruitLaddu from "../images/dry-fruit-laddu.png";
+import ragiLaddu from "../images/ragi-laddu-140kb.png";
+import oatsLaddu from "../images/oats-laddu-140kb.png";
+import milletLaddu from "../images/millet-laddu-140kb.png";
+import dryFruitLaddu from "../images/dry-fruit-laddu-140kb.jpg";
 
 const whatsappNumber = "918341921521";
 

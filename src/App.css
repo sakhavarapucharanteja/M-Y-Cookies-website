@@ -1505,3 +1505,45 @@ footer {
   object-fit: contain;
   display: block;
 }
+
+/* ORDER AND CALL BUTTON CONTAINER */
+.product-action-buttons {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+
+/* WHATSAPP BUTTON */
+.product-whatsapp-btn {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* CALL BUTTON */
+.product-call-btn {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+
+  .product-action-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+  }
+
+  .product-whatsapp-btn,
+  .product-call-btn {
+    width: 100%;
+    min-width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+}

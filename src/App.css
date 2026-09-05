@@ -2894,3 +2894,76 @@ footer {
     gap: 10px;
   }
 }
+
+
+/* ABOUT PAGE - EXTRA CONTENT */
+
+.about-busy-text {
+  max-width: 750px;
+  margin: 35px auto 0;
+  text-align: center;
+}
+
+.about-busy-text p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+
+/* PROMISE LIST */
+
+.about-promise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 25px;
+}
+
+.about-promise-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.about-promise-item svg {
+  color: #a3202a;
+  flex-shrink: 0;
+}
+
+
+/* ABOUT CTA QUOTE */
+
+.about-quote {
+  max-width: 700px;
+  margin: 18px auto;
+  font-size: 19px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.about-tagline {
+  margin-top: 25px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .about-busy-text p {
+    font-size: 16px;
+  }
+
+  .about-quote {
+    font-size: 17px;
+  }
+
+  .about-tagline {
+    font-size: 18px;
+  }
+
+}

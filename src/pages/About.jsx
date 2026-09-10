@@ -22,7 +22,7 @@ function About() {
       icon: <Heart size={28} fill="currentColor" />,
       title: "Made With Care",
       description:
-        "Every MNY product is prepared at home with care, attention and the goodness of homemade food.",
+        "Every M&Y product is prepared at home with care, attention and the goodness of homemade food.",
     },
     {
       icon: <Leaf size={28} />,
@@ -94,7 +94,7 @@ function About() {
 
         <div className="about-content">
           <span className="eyebrow">
-            ABOUT MNY HOMEMADE FOODS
+            ABOUT M&Y HOMEMADE FOODS
           </span>
 
           <h2>
@@ -102,7 +102,7 @@ function About() {
           </h2>
 
           <p>
-            At MNY Homemade Foods, we believe that healthy eating should not
+            At M&Y Homemade Foods, we believe that healthy eating should not
             be complicated or time-consuming.
           </p>
 
@@ -112,7 +112,7 @@ function About() {
           </p>
 
           <p>
-            That’s why we started MNY Homemade Foods — with a simple purpose:
+            That’s why we started M&Y Homemade Foods — with a simple purpose:
             to make everyday nutrition easy, convenient, tasty and accessible.
           </p>
 
@@ -125,12 +125,12 @@ function About() {
       </section>
 
 
-      {/* WHY MNY */}
+      {/* WHY M&Y */}
       <section className="about-story">
 
         <div className="about-story-content">
           <span className="eyebrow">
-            WHY MNY HOMEMADE FOODS?
+            WHY M&Y HOMEMADE FOODS?
           </span>
 
           <h2>
@@ -213,7 +213,7 @@ function About() {
 
         <div className="about-busy-text">
           <p>
-            Simply keep your favourite MNY snacks in your bag, office, car or
+            Simply keep your favourite M&Y snacks in your bag, office, car or
             at home and enjoy them whenever you need a quick bite.
           </p>
         </div>
@@ -339,7 +339,7 @@ function About() {
           </p>
 
           <p>
-            That is the philosophy behind MNY Homemade Foods.
+            That is the philosophy behind M&Y Homemade Foods.
           </p>
 
         </div>
@@ -361,7 +361,7 @@ function About() {
           </h2>
 
           <p>
-            At MNY Homemade Foods, we want to make wholesome food a regular
+            At M&Y Homemade Foods, we want to make wholesome food a regular
             part of your everyday routine, not something you choose only when
             you have extra time.
           </p>
@@ -405,7 +405,7 @@ function About() {
       <section className="about-cta">
 
         <span className="eyebrow">
-          MNY HOMEMADE FOODS
+          M&Y HOMEMADE FOODS
         </span>
 
         <h2>
@@ -421,7 +421,7 @@ function About() {
         </p>
 
         <p>
-          So, we created MNY Homemade Foods to bring you homemade, wholesome
+          So, we created M&Y Homemade Foods to bring you homemade, wholesome
           snack options that you can easily include in your everyday lifestyle.
         </p>
 

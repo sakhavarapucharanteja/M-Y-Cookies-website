@@ -28,22 +28,68 @@ function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+      const handleSubmit = (e) => {
+        e.preventDefault();
 
-    // Google Form integration will be added here later
-    console.log("Form submitted:", formData);
+        const GOOGLE_SCRIPT_URL =
+          "https://script.google.com/macros/s/AKfycbwgv_kHxFeM4tc3BnU9a9aTDtJHLoilYL2C9DTZKVbDDGN73IJK7cf66mXOdX24wWUG6Q/exec";
 
-    alert("Thank you! Your enquiry has been submitted.");
+        // Create hidden iframe
+        const iframe = document.createElement("iframe");
+        iframe.name = "hidden_iframe";
+        iframe.style.display = "none";
+        document.body.appendChild(iframe);
 
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      enquiry: "General Enquiry",
-      message: "",
-    });
-  };
+        // Create temporary form
+        const form = document.createElement("form");
+
+        form.method = "POST";
+        form.action = GOOGLE_SCRIPT_URL;
+        form.target = "hidden_iframe";
+        form.style.display = "none";
+
+        // Add form fields
+        const fields = {
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          enquiryType: formData.enquiry,
+          message: formData.message,
+        };
+
+        Object.entries(fields).forEach(([key, value]) => {
+          const input = document.createElement("input");
+
+          input.type = "hidden";
+          input.name = key;
+          input.value = value;
+
+          form.appendChild(input);
+        });
+
+        document.body.appendChild(form);
+
+        // Submit to Google Apps Script
+        form.submit();
+
+        // Show success message
+        alert("Thank you! Your enquiry has been submitted.");
+
+        // Reset form
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          enquiry: "General Enquiry",
+          message: "",
+        });
+
+        // Clean up
+        setTimeout(() => {
+          form.remove();
+          iframe.remove();
+        }, 3000);
+      };
 
   return (
     <main className="contact-page">

@@ -225,7 +225,7 @@ function Home() {
               fill="currentColor"
             />
 
-            MADE WITH LOVE
+            Healthy Tasty & Nutrition
 
           </div>
 

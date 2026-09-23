@@ -43,7 +43,7 @@ const products = [
     prices: [
       {
         weight: "250 g",
-        price: "200",
+        price: "225",
       },
       {
         weight: "500 g",
@@ -65,7 +65,7 @@ const products = [
     prices: [
       {
         weight: "250 g",
-        price: "200",
+        price: "225",
       },
       {
         weight: "500 g",
@@ -87,7 +87,7 @@ const products = [
     prices: [
       {
         weight: "250 g",
-        price: "225",
+        price: "250",
       },
       {
         weight: "500 g",
@@ -109,7 +109,7 @@ const products = [
     prices: [
       {
         weight: "250 g",
-        price: "225",
+        price: "250",
       },
       {
         weight: "500 g",

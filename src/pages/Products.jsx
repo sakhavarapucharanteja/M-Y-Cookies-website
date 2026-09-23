@@ -139,7 +139,7 @@ const products = [
     id: "dosa",
     name: "Dosa",
     category: "Tiffins & Snacks",
-    price: "10",
+    price: "40",
     image: Dosa,
     description:
       "Freshly prepared homemade dosa, crispy on the outside and soft on the inside.",

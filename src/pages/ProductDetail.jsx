@@ -243,8 +243,8 @@ const products = [
 
     prices: [
       {
-        weight: "1 Piece",
-        price: "10",
+        weight: "1 Plate",
+        price: "40",
       },
     ],
   },

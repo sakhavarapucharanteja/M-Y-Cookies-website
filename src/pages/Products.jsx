@@ -11,10 +11,13 @@ import dryFruitchocolateMango from "../images/Dry-fruit-chocolate-mango-140kb.jp
 import dryFruitchocolateStrawberry from "../images/Dry-fruit-chocolate-strawberry-140kb.jpg";
 import dryFruitchocolatechocolate from "../images/Dry-fruit-chocolate-choco-140kb.jpg";
 
-/* NEW PRODUCT IMAGES */
 import dryFruitsDonut from "../images/dry-fruits-donut-140kb.png";
 import datesChocolate from "../images/dates-chocolate-140kb.png";
 import paniPuri from "../images/pani-puri-140kb.png";
+import ragiMultigrainCookies from "../images/ragi-multigrain-cookie.png";
+import Dosa from "../images/dosa_140kb.jpg";
+import Punugulu from "../images/punugulu_140kb.jpg";
+import VegSandwich from "../images/veg_sandwich_140kb.jpg";
 
 
 const products = [
@@ -24,7 +27,7 @@ const products = [
     id: "ragi-laddu",
     name: "Ragi Laddu",
     category: "Healthy Laddus",
-    price: "225",
+    price: "200",
     image: ragiLaddu,
     description: "Wholesome homemade ragi laddus made with care.",
   },
@@ -33,7 +36,7 @@ const products = [
     id: "oats-laddu",
     name: "Oats Laddu",
     category: "Healthy Laddus",
-    price: "225",
+    price: "200",
     image: oatsLaddu,
     description: "A delicious and healthy homemade treat.",
   },
@@ -42,7 +45,7 @@ const products = [
     id: "millet-laddu",
     name: "Millet Laddu",
     category: "Healthy Laddus",
-    price: "250",
+    price: "225",
     image: milletLaddu,
     description: "Nutritious millet goodness in every bite.",
   },
@@ -51,7 +54,7 @@ const products = [
     id: "dry-fruit-laddu",
     name: "Dry Fruit Laddu",
     category: "Healthy Laddus",
-    price: "250",
+    price: "225",
     image: dryFruitLaddu,
     description: "Rich dry fruits blended into a premium sweet.",
   },
@@ -99,9 +102,6 @@ const products = [
       "Rich and delicious dry fruits chocolate with an extra chocolate flavor.",
   },
 
-
-  // NEW PRODUCTS
-
   {
     id: "dry-fruits-donut",
     name: "Dry Fruits Donut",
@@ -122,12 +122,52 @@ const products = [
       "Rich and delicious dates coated with premium chocolate and crunchy toppings.",
   },
 
+  // Cookies
+  {
+    id: "ragi-multigrain-cookies",
+    name: "Ragi & Multi Grain Cookies",
+    category: "Cookies",
+    price: "179",
+    image: ragiMultigrainCookies,
+    description:"Wholesome homemade cookies made with ragi and a delicious blend of multiple grains.",
+  },
+
 
   // SNACKS
+
+  {
+    id: "dosa",
+    name: "Dosa",
+    category: "Tiffins & Snacks",
+    price: "10",
+    image: Dosa,
+    description:
+      "Freshly prepared homemade dosa, crispy on the outside and soft on the inside.",
+  },
+
+  {
+    id: "punugulu",
+    name: "Punugulu",
+    category: "Tiffins & Snacks",
+    price: "50",
+    image: Punugulu,
+    description:
+      "Crispy and delicious homemade punugulu prepared fresh and perfect as a tasty snack.",
+  },
+
+  {
+    id: "veg-sandwich",
+    name: "Veg Sandwich",
+    category: "Tiffins & Snacks",
+    price: "75",
+    image: VegSandwich,
+    description:
+      "Fresh and delicious homemade veg sandwich prepared with flavorful vegetables.",
+  },
   {
     id: "pani-puri",
     name: "Pani Puri",
-    category: "Snacks",
+    category: "Tiffins & Snacks",
     price: "50",
     image: paniPuri,
     description:
@@ -137,13 +177,36 @@ const products = [
 ];
 
 
+// CATEGORY ORDER
+const categoryOrder = [
+  "Healthy Laddus",
+  "Chocolates",
+  "Dry Fruits Chocolates",
+  "Cookies",
+  "Tiffins & Snacks",
+];
+
+
 function Products() {
+
   const navigate = useNavigate();
+
+
+  // GROUP PRODUCTS BY CATEGORY
+  const groupedProducts = categoryOrder.map((category) => ({
+    category,
+    products: products.filter(
+      (product) => product.category === category
+    ),
+  }));
+
 
   return (
     <div className="products-page">
 
+
       {/* PAGE HEADER */}
+
       <section className="products-page-header">
 
         <span className="eyebrow">
@@ -156,94 +219,139 @@ function Products() {
         </h1>
 
         <p>
-          Explore our freshly prepared homemade sweets, healthy treats,
-          delicious chocolates and snacks.
+          Explore our freshly prepared homemade sweets,
+          healthy treats, delicious chocolates and snacks.
         </p>
 
       </section>
 
 
-      {/* PRODUCTS */}
+
+      {/* PRODUCTS BY CATEGORY */}
+
       <section className="products-page-content">
 
-        <div className="product-grid">
-
-          {products.map((product) => (
+        {groupedProducts.map(
+          ({ category, products: categoryProducts }) => (
 
             <div
-              className="product-card"
-              key={product.id}
-              onClick={() =>
-                navigate(`/product/${product.id}`)
-              }
-              style={{ cursor: "pointer" }}
+              className="product-category-section"
+              key={category}
             >
 
-              {/* PRODUCT IMAGE */}
-              <div className="product-image">
+              {/* CATEGORY TITLE */}
 
-                <img
-                  src={product.image}
-                  alt={product.name}
-                />
+              <div className="product-category-header">
 
-                <div className="product-category">
-                  {product.category}
-                </div>
+                <h2>{category}</h2>
+
+                <div className="category-line"></div>
 
               </div>
 
 
-              {/* PRODUCT INFORMATION */}
-              <div className="product-info">
 
-                <h3>{product.name}</h3>
+              {/* CATEGORY PRODUCTS */}
 
-                <p>{product.description}</p>
+              <div className="product-grid">
+
+                {categoryProducts.map((product) => (
+
+                  <div
+                    className="product-card"
+                    key={product.id}
+                    onClick={() =>
+                      navigate(`/product/${product.id}`)
+                    }
+                    style={{ cursor: "pointer" }}
+                  >
 
 
-                <div className="product-bottom">
+                    {/* PRODUCT IMAGE */}
 
-                  <div className="price">
+                    <div className="product-image">
 
-                    <span>
-                      {product.price === "Contact for price"
-                        ? "Price"
-                        : "Starting from"}
-                    </span>
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                      />
 
-                    <strong>
-                      {product.price === "Contact for price"
-                        ? "Contact for price"
-                        : `₹${product.price}`}
-                    </strong>
+                      <div className="product-category">
+                        {product.category}
+                      </div>
+
+                    </div>
+
+
+
+                    {/* PRODUCT INFORMATION */}
+
+                    <div className="product-info">
+
+                      <h3>{product.name}</h3>
+
+                      <p>{product.description}</p>
+
+
+
+                      <div className="product-bottom">
+
+                        <div className="price">
+
+                          <span>
+                            {product.price === "Contact for price"
+                              ? "Price"
+                              : "Starting from"}
+                          </span>
+
+                          <strong>
+                            {product.price === "Contact for price"
+                              ? "Contact for price"
+                              : `₹${product.price}`}
+                          </strong>
+
+                        </div>
+
+
+
+                        <button
+                          className="product-order-btn"
+                          onClick={(e) => {
+
+                            e.stopPropagation();
+
+                            navigate(
+                              `/product/${product.id}`
+                            );
+
+                          }}
+                        >
+
+                          <MessageCircle size={18} />
+
+                          View
+
+                        </button>
+
+                      </div>
+
+                    </div>
 
                   </div>
 
-
-                  <button
-                    className="product-order-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      navigate(`/product/${product.id}`);
-                    }}
-                  >
-                    <MessageCircle size={18} />
-                    View
-                  </button>
-
-                </div>
+                ))}
 
               </div>
 
             </div>
 
-          ))}
+          )
+        )}
 
-        </div>
 
 
         {/* BACK BUTTON */}
+
         <div className="products-back-button">
 
           <Link

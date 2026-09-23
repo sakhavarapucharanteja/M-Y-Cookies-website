@@ -23,6 +23,10 @@ import dryFruitchocolatechocolate from "../images/Dry-fruit-chocolate-choco-140k
 import dryFruitsDonut from "../images/dry-fruits-donut-140kb.png";
 import datesChocolate from "../images/dates-chocolate-140kb.png";
 import paniPuri from "../images/pani-puri-140kb.png";
+import ragiMultigrainCookies from "../images/ragi-multigrain-cookie.png";
+import Dosa from "../images/dosa_140kb.jpg";
+import Punugulu from "../images/punugulu_140kb.jpg";
+import VegSandwich from "../images/veg_sandwich_140kb.jpg";
 
 const whatsappNumber = "918341921521";
 
@@ -39,7 +43,7 @@ const products = [
     prices: [
       {
         weight: "250 g",
-        price: "225",
+        price: "200",
       },
       {
         weight: "500 g",
@@ -61,7 +65,7 @@ const products = [
     prices: [
       {
         weight: "250 g",
-        price: "225",
+        price: "200",
       },
       {
         weight: "500 g",
@@ -83,7 +87,7 @@ const products = [
     prices: [
       {
         weight: "250 g",
-        price: "250",
+        price: "225",
       },
       {
         weight: "500 g",
@@ -105,7 +109,7 @@ const products = [
     prices: [
       {
         weight: "250 g",
-        price: "250",
+        price: "225",
       },
       {
         weight: "500 g",
@@ -190,7 +194,100 @@ const products = [
   },
 
 
+  //Cookies
+
+  {
+    id: "ragi-multigrain-cookies",
+
+    name: "Ragi & Multi Grain Cookies",
+
+    category: "Cookies",
+
+    image: ragiMultigrainCookies,
+
+    description:
+      "Wholesome homemade cookies made with ragi and a delicious blend of multiple grains.",
+
+    prices: [
+      {
+        weight: "250 g",
+        price: "180",
+      },
+      {
+        weight: "500 g",
+        price: "360",
+      },
+      {
+        weight: "1 kg",
+        price: "540",
+      },
+    ],
+  },
+
+
+
   // SNACKS
+
+
+  {
+    id: "dosa",
+
+    name: "Dosa",
+
+    category: "Tiffins & Snacks",
+
+    image: Dosa,
+
+    description:
+      "Freshly prepared homemade dosa, crispy on the outside and soft inside.",
+
+    prices: [
+      {
+        weight: "1 Piece",
+        price: "10",
+      },
+    ],
+  },
+
+  {
+    id: "punugulu",
+
+    name: "Punugulu",
+
+    category: "Tiffins & Snacks",
+
+    image: Punugulu,
+
+    description:
+      "Crispy and delicious homemade punugulu, perfect as a tasty evening snack.",
+
+    prices: [
+      {
+        weight: "1 Plate",
+        price: "50",
+      },
+    ],
+  },
+
+  {
+    id: "veg-sandwich",
+
+    name: "Veg Sandwich",
+
+    category: "Tiffins & Snacks",
+
+    image: VegSandwich,
+
+    description:
+      "Fresh and delicious homemade veg sandwich prepared with flavorful vegetables.",
+
+    prices: [
+      {
+        weight: "1 Piece",
+        price: "75",
+      },
+    ],
+  },
 
   {
     id: "pani-puri",

@@ -127,7 +127,7 @@ const products = [
     id: "ragi-multigrain-cookies",
     name: "Ragi & Multi Grain Cookies",
     category: "Cookies",
-    price: "179",
+    price: "185",
     image: ragiMultigrainCookies,
     description:"Wholesome homemade cookies made with ragi and a delicious blend of multiple grains.",
   },

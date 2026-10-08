@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import {
   Heart,
   Star,
@@ -14,9 +15,28 @@ import {
   Home,
   Car,
   CheckCircle,
+  MapPin,
 } from "lucide-react";
 
+/* =========================================================
+   STALL IMAGES & VIDEO
+========================================================= */
+
+import stall1 from "../images/stall1.jpeg";
+import stall1_1 from "../images/stall1.1.jpeg";
+import stall1_2 from "../images/stall1.2.jpeg";
+
+import stall2 from "../images/stall2.jpeg";
+import stall2_1 from "../images/stall2.1.jpeg";
+import stall2Video from "../images/stall2v.mp4";
+
+
 function About() {
+
+  /* =========================================================
+     WHY CHOOSE US
+  ========================================================= */
+
   const values = [
     {
       icon: <Heart size={28} fill="currentColor" />,
@@ -24,18 +44,21 @@ function About() {
       description:
         "Every M&Y product is prepared at home with care, attention and the goodness of homemade food.",
     },
+
     {
       icon: <Leaf size={28} />,
       title: "Wholesome Ingredients",
       description:
         "We carefully prepare our products using quality ingredients such as dry fruits, nuts, seeds and other wholesome ingredients.",
     },
+
     {
       icon: <Sparkles size={28} />,
       title: "Nutrition Made Easy",
       description:
         "We bring together nutritious ingredients in convenient snack options that are easy to enjoy during your busy day.",
     },
+
     {
       icon: <Award size={28} />,
       title: "A Better Snack Choice",
@@ -44,28 +67,42 @@ function About() {
     },
   ];
 
+
+  /* =========================================================
+     BUSY LIFESTYLE
+  ========================================================= */
+
   const lifestylePoints = [
     {
       icon: <Briefcase size={22} />,
       title: "Working Long Hours",
     },
+
     {
       icon: <Plane size={22} />,
       title: "Travelling",
     },
+
     {
       icon: <GraduationCap size={22} />,
       title: "Studying",
     },
+
     {
       icon: <Home size={22} />,
       title: "Managing a Family",
     },
+
     {
       icon: <Car size={22} />,
       title: "On the Go",
     },
   ];
+
+
+  /* =========================================================
+     OUR PROMISE
+  ========================================================= */
 
   const promisePoints = [
     "Quality ingredients",
@@ -75,24 +112,41 @@ function About() {
     "Making nutritious eating easier for busy lifestyles",
   ];
 
+
   return (
     <div className="page-container about-page">
 
-      {/* HERO ABOUT SECTION */}
+
+      {/* =====================================================
+          HERO ABOUT SECTION
+      ===================================================== */}
+
       <section className="about-section about-hero-section">
 
         <div className="about-visual">
+
           <div className="about-circle">
             🌿
           </div>
 
           <div className="about-small-card">
-            <Star size={20} fill="currentColor" />
-            <span>Healthy & Homemade</span>
+
+            <Star
+              size={20}
+              fill="currentColor"
+            />
+
+            <span>
+              Healthy & Homemade
+            </span>
+
           </div>
+
         </div>
 
+
         <div className="about-content">
+
           <span className="eyebrow">
             ABOUT M&Y HOMEMADE FOODS
           </span>
@@ -116,19 +170,27 @@ function About() {
             to make everyday nutrition easy, convenient, tasty and accessible.
           </p>
 
-          <Link to="/contact" className="primary-btn">
+          <Link
+            to="/contact"
+            className="primary-btn"
+          >
             <MessageCircle size={20} />
             Contact Us
           </Link>
+
         </div>
 
       </section>
 
 
-      {/* WHY M&Y */}
+      {/* =====================================================
+          WHY M&Y HOMEMADE FOODS
+      ===================================================== */}
+
       <section className="about-story">
 
         <div className="about-story-content">
+
           <span className="eyebrow">
             WHY M&Y HOMEMADE FOODS?
           </span>
@@ -153,7 +215,9 @@ function About() {
             We believe that good food should be easy to enjoy, especially when
             life gets busy.
           </p>
+
         </div>
+
 
         <div className="story-highlight">
 
@@ -161,7 +225,9 @@ function About() {
             <Leaf size={42} />
           </div>
 
-          <h3>Nutrition Made Easy</h3>
+          <h3>
+            Nutrition Made Easy
+          </h3>
 
           <p>
             Wholesome homemade snack options designed to fit easily into your
@@ -173,10 +239,236 @@ function About() {
       </section>
 
 
-      {/* BUSY LIFESTYLE */}
+      {/* =====================================================
+          OUR EXPERIENCE
+      ===================================================== */}
+
+      <section className="about-experience">
+
+
+        {/* EXPERIENCE HEADER */}
+
+        <div className="experience-header">
+
+          <span className="eyebrow">
+            OUR JOURNEY
+          </span>
+
+          <h2>
+            From Our Kitchen to the Community
+          </h2>
+
+          <p>
+            Our journey goes beyond preparing homemade food.
+            We love meeting people, sharing our products and
+            bringing wholesome homemade choices closer to the community.
+          </p>
+
+        </div>
+
+
+        {/* =================================================
+            BASAVATARAMAKAM INDO-AMERICAN CANCER HOSPITAL
+        ================================================= */}
+
+        <div className="experience-location">
+
+
+          {/* LOCATION TITLE */}
+
+          <div className="experience-location-header">
+
+            <div className="experience-location-icon">
+              <MapPin size={25} />
+            </div>
+
+            <div>
+
+              <h3>
+                Basavatarakam Indo-American Cancer Hospital
+              </h3>
+
+              <p>
+                Banjara Hills, Hyderabad
+              </p>
+
+            </div>
+
+          </div>
+
+
+          {/* GALLERY */}
+
+          <div className="experience-gallery">
+
+
+            {/* IMAGE 1 */}
+
+            <div className="experience-photo">
+
+              <img
+                src={stall1}
+                alt="M&Y Homemade Foods stall at Basavatarakam Indo-American Cancer Hospital, Banjara Hills"
+              />
+
+              <span className="experience-photo-label">
+                Our Homemade Food Stall
+              </span>
+
+            </div>
+
+
+            {/* IMAGE 2 */}
+
+            <div className="experience-photo">
+
+              <img
+                src={stall1_1}
+                alt="M&Y Homemade Foods products at Basavatarakam Indo-American Cancer Hospital"
+              />
+
+            </div>
+
+
+            {/* IMAGE 3 */}
+
+            <div className="experience-photo">
+
+              <img
+                src={stall1_2}
+                alt="M&Y Homemade Foods stall experience at Banjara Hills"
+              />
+
+            </div>
+
+          </div>
+
+
+          {/* DESCRIPTION */}
+
+          <p className="experience-description">
+
+            We had the opportunity to set up our homemade food stall
+            at Basavatarakam Indo-American Cancer Hospital & Research
+            Institute, Banjara Hills, where we showcased our homemade
+            products and connected directly with visitors.
+
+          </p>
+
+        </div>
+
+
+        {/* =================================================
+            MODERN OFFICERS WELFARE ASSOCIATION
+        ================================================= */}
+
+        <div className="experience-location modern-officers-location">
+
+
+          {/* LOCATION TITLE */}
+
+          <div className="experience-location-header">
+
+            <div className="experience-location-icon">
+              <MapPin size={25} />
+            </div>
+
+            <div>
+
+              <h3>
+                Modern Officers Welfare Association
+              </h3>
+
+              <p>
+                Secunderabad, Telangana
+              </p>
+
+            </div>
+
+          </div>
+
+
+          {/* GALLERY */}
+
+          <div className="experience-gallery experience-gallery-three">
+
+
+            {/* IMAGE 1 */}
+
+            <div className="experience-photo">
+
+              <img
+                src={stall2}
+                alt="M&Y Homemade Foods stall at Modern Officers Welfare Association, Secunderabad"
+              />
+
+              <span className="experience-photo-label">
+                Homemade Food Stall
+              </span>
+
+            </div>
+
+
+            {/* IMAGE 2 */}
+
+            <div className="experience-photo">
+
+              <img
+                src={stall2_1}
+                alt="M&Y Homemade Foods products at Modern Officers Welfare Association"
+              />
+
+            </div>
+
+
+            {/* VIDEO */}
+
+            <div className="experience-photo experience-video">
+
+              <video
+                src={stall2Video}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                aria-label="M&Y Homemade Foods stall experience at Modern Officers Welfare Association, Secunderabad"
+              />
+
+              <span className="experience-photo-label">
+                Stall Experience
+              </span>
+
+            </div>
+
+          </div>
+
+
+          {/* DESCRIPTION */}
+
+          <p className="experience-description">
+
+            We also had the opportunity to set up our stall at the
+            Modern Officers Welfare Association in Secunderabad,
+            showcasing a variety of homemade food and snack options
+            and connecting with the local community.
+
+          </p>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          MADE FOR BUSY LIFESTYLES
+      ===================================================== */}
+
       <section className="about-values">
 
+
         <div className="values-heading">
+
           <span className="eyebrow">
             MADE FOR BUSY LIFESTYLES
           </span>
@@ -189,40 +481,57 @@ function About() {
             We understand how difficult it can be to maintain healthy eating
             habits when you have a busy schedule.
           </p>
+
         </div>
 
+
         <div className="values-grid">
+
           {lifestylePoints.map((item) => (
+
             <div
               className="value-card"
               key={item.title}
             >
+
               <div className="value-icon">
                 {item.icon}
               </div>
 
-              <h3>{item.title}</h3>
+              <h3>
+                {item.title}
+              </h3>
 
               <p>
                 Convenient homemade snacks that can fit into your everyday
                 routine.
               </p>
+
             </div>
+
           ))}
+
         </div>
 
+
         <div className="about-busy-text">
+
           <p>
             Simply keep your favourite M&Y snacks in your bag, office, car or
             at home and enjoy them whenever you need a quick bite.
           </p>
+
         </div>
 
       </section>
 
 
-      {/* CHOOSE BETTER */}
+      {/* =====================================================
+          CHOOSE BETTER
+      ===================================================== */}
+
       <section className="about-story">
+
 
         <div className="story-highlight">
 
@@ -230,7 +539,9 @@ function About() {
             <Sparkles size={42} />
           </div>
 
-          <h3>Choose Better</h3>
+          <h3>
+            Choose Better
+          </h3>
 
           <p>
             When hunger strikes, having a wholesome homemade snack nearby can
@@ -239,7 +550,9 @@ function About() {
 
         </div>
 
+
         <div className="about-story-content">
+
           <span className="eyebrow">
             CHOOSE BETTER THAN JUNK
           </span>
@@ -263,15 +576,20 @@ function About() {
             Our products are created to help make that better choice simple,
             convenient and delicious.
           </p>
+
         </div>
 
       </section>
 
 
-      {/* VALUES */}
+      {/* =====================================================
+          WHY CHOOSE US
+      ===================================================== */}
+
       <section className="about-values">
 
         <div className="values-heading">
+
           <span className="eyebrow">
             WHY CHOOSE US
           </span>
@@ -284,11 +602,14 @@ function About() {
             Simple ingredients, homemade preparation and convenient snack
             options for everyday life.
           </p>
+
         </div>
+
 
         <div className="values-grid">
 
           {values.map((value) => (
+
             <div
               className="value-card"
               key={value.title}
@@ -298,11 +619,16 @@ function About() {
                 {value.icon}
               </div>
 
-              <h3>{value.title}</h3>
+              <h3>
+                {value.title}
+              </h3>
 
-              <p>{value.description}</p>
+              <p>
+                {value.description}
+              </p>
 
             </div>
+
           ))}
 
         </div>
@@ -310,12 +636,22 @@ function About() {
       </section>
 
 
-      {/* PHILOSOPHY */}
+      {/* =====================================================
+          PHILOSOPHY
+      ===================================================== */}
+
       <section className="about-promise">
 
+
         <div className="promise-icon">
-          <Heart size={45} fill="currentColor" />
+
+          <Heart
+            size={45}
+            fill="currentColor"
+          />
+
         </div>
+
 
         <div className="promise-content">
 
@@ -347,8 +683,12 @@ function About() {
       </section>
 
 
-      {/* OUR PROMISE */}
+      {/* =====================================================
+          OUR PROMISE
+      ===================================================== */}
+
       <section className="about-story">
+
 
         <div className="about-story-content">
 
@@ -366,16 +706,24 @@ function About() {
             you have extra time.
           </p>
 
+
           <div className="about-promise-list">
 
             {promisePoints.map((point) => (
+
               <div
                 className="about-promise-item"
                 key={point}
               >
+
                 <CheckCircle size={20} />
-                <span>{point}</span>
+
+                <span>
+                  {point}
+                </span>
+
               </div>
+
             ))}
 
           </div>
@@ -389,7 +737,9 @@ function About() {
             <Gift size={42} />
           </div>
 
-          <h3>Our Promise</h3>
+          <h3>
+            Our Promise
+          </h3>
 
           <p>
             Quality ingredients, homemade preparation and wholesome snack
@@ -401,7 +751,10 @@ function About() {
       </section>
 
 
-      {/* CTA */}
+      {/* =====================================================
+          CTA
+      ===================================================== */}
+
       <section className="about-cta">
 
         <span className="eyebrow">
@@ -429,6 +782,7 @@ function About() {
           Eat Better. Snack Smarter. Make Nutrition a Daily Habit.
         </h3>
 
+
         <div className="about-cta-buttons">
 
           <Link
@@ -438,6 +792,7 @@ function About() {
             Explore Products
             <ArrowRight size={19} />
           </Link>
+
 
           <Link
             to="/contact"
@@ -449,6 +804,7 @@ function About() {
         </div>
 
       </section>
+
 
     </div>
   );

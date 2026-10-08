@@ -151,7 +151,7 @@ function Home() {
 
 
               <h2>
-                SMALL OR BIG — WE ACCEPT ALL ORDERS!
+                SMALL — WE ACCEPT ALL ORDERS!
               </h2>
 
 

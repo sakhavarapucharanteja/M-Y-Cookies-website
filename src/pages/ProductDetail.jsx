@@ -211,7 +211,7 @@ const products = [
     prices: [
       {
         weight: "250 g",
-        price: "180",
+        price: "185",
       },
       {
         weight: "500 g",

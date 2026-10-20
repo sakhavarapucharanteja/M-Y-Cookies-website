@@ -19,6 +19,8 @@ import Dosa from "../images/dosa_140kb.jpg";
 import Punugulu from "../images/punugulu_140kb.jpg";
 import VegSandwich from "../images/veg_sandwich_140kb.jpg";
 
+import multyNutritionPowder from "../images/multy-nutrition-powder.jpeg";
+
 
 const products = [
 
@@ -122,12 +124,24 @@ const products = [
       "Rich and delicious dates coated with premium chocolate and crunchy toppings.",
   },
 
+
+    // MULTY NUTRITION POWDER
+  {
+    id: "multy-nutrition-powder",
+    name: "Multy Nutrition Powder",
+    category: "Healthy Nutrition",
+    price: "100",
+    image: multyNutritionPowder,
+    description:
+      "Homemade multi-nutrition powder prepared with a blend of traditional ingredients for everyday nutrition.",
+  },
+
   // Cookies
   {
     id: "ragi-multigrain-cookies",
     name: "Ragi & Multi Grain Cookies",
     category: "Cookies",
-    price: "185",
+    price: "199",
     image: ragiMultigrainCookies,
     description:"Wholesome homemade cookies made with ragi and a delicious blend of multiple grains.",
   },
@@ -180,6 +194,7 @@ const products = [
 // CATEGORY ORDER
 const categoryOrder = [
   "Healthy Laddus",
+  "Healthy Nutrition",
   "Chocolates",
   "Dry Fruits Chocolates",
   "Cookies",

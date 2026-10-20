@@ -28,6 +28,8 @@ import Dosa from "../images/dosa_140kb.jpg";
 import Punugulu from "../images/punugulu_140kb.jpg";
 import VegSandwich from "../images/veg_sandwich_140kb.jpg";
 
+import multyNutritionPowder from "../images/multy-nutrition-powder.jpeg";
+
 const whatsappNumber = "918341921521";
 
 const products = [
@@ -194,6 +196,31 @@ const products = [
   },
 
 
+    // Multy Nutrition Powder
+    {
+    id: "multy-nutrition-powder",
+    name: "Multy Nutrition Powder",
+    category: "Healthy Nutrition",
+    image: multyNutritionPowder,
+    description:
+      "Homemade multi-nutrition powder prepared with a blend of traditional ingredients.",
+    prices: [
+      {
+        weight: "100 g",
+        price: "100",
+      },
+      {
+        weight: "200 g",
+        price: "200",
+      },
+      {
+        weight: "300 g",
+        price: "300",
+      },
+    ],
+  },
+
+
   //Cookies
 
   {
@@ -211,15 +238,15 @@ const products = [
     prices: [
       {
         weight: "250 g",
-        price: "185",
+        price: "199",
       },
       {
         weight: "500 g",
-        price: "360",
+        price: "389",
       },
       {
         weight: "1 kg",
-        price: "540",
+        price: "779",
       },
     ],
   },

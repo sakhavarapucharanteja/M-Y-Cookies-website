@@ -16,6 +16,7 @@ import ragiLaddu from "../images/ragi-laddu-140kb.png";
 import oatsLaddu from "../images/oats-laddu-140kb.png";
 import milletLaddu from "../images/millet-laddu-140kb.png";
 import dryFruitLaddu from "../images/dry-fruit-laddu-140kb.jpg";
+import chocolateCoursePoster from "../images/chocolate_making_course_poster_hd.jpg";
 
 
 const whatsappNumber = "918341921521";
@@ -599,6 +600,79 @@ function Home() {
         </div>
 
       </section>
+
+
+      
+      
+{/* CHOCOLATE MAKING COURSE */}
+<section className="chocolate-coaching-section">
+  <div className="chocolate-coaching-container">
+
+    {/* LEFT SIDE - POSTER */}
+    <div className="chocolate-coaching-image">
+      <img
+        src={chocolateCoursePoster}
+        alt="M & Y Chocolate Making Course"
+        loading="lazy"
+      />
+    </div>
+
+    {/* RIGHT SIDE - CONTENT */}
+    <div className="chocolate-coaching-content">
+      <span className="chocolate-coaching-label">
+        🍫 LEARN SOMETHING DELICIOUS
+      </span>
+
+      <h2>
+        Turn Your Passion Into
+        <span> Chocolate Creations!</span>
+      </h2>
+
+      <p>
+        Love chocolates? Learn how to make delicious,
+        beautiful homemade chocolates with our practical
+        chocolate-making coaching at M & Y Home Made Foods.
+      </p>
+
+      <div className="chocolate-coaching-features">
+        <div>✓ Hands-on practical training</div>
+        <div>✓ Learn different varieties of chocolates</div>
+        <div>✓ Tips to start your own chocolate business</div>
+        <div>✓ Advanced tips and career guidance</div>
+      </div>
+
+      <div className="chocolate-coaching-price">
+        <span>Course Fee</span>
+        <strong>₹2,999</strong>
+        <small>1 week · 2 classes · 2 hours per class</small>
+      </div>
+
+      <button
+        className="chocolate-coaching-button"
+        onClick={() => {
+          const message =
+            "Hi M & Y Home Made Foods! I am interested in your Chocolate Making Course. Please share the registration details.";
+          window.open(
+            `https://wa.me/918341921521?text=${encodeURIComponent(message)}`,
+            "_blank",
+            "noopener,noreferrer"
+          );
+        }}
+      >
+        <MessageCircle size={20} />
+        Enquire on WhatsApp
+        <ArrowRight size={19} />
+      </button>
+
+      <small className="chocolate-coaching-note">
+        Learn • Create • Start Your Chocolate Journey
+      </small>
+    </div>
+
+  </div>
+</section>
+
+
 
 
 

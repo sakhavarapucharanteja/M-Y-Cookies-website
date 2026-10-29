@@ -4254,3 +4254,187 @@ footer {
   }
 
 }
+
+
+
+/* CHOCOLATE MAKING COACHING SECTION */
+.chocolate-coaching-section {
+  width: 100%;
+  padding: 65px 24px;
+  background: #fffaf3;
+  box-sizing: border-box;
+}
+
+.chocolate-coaching-container {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: 55px;
+}
+
+/* LEFT POSTER */
+.chocolate-coaching-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+.chocolate-coaching-image img {
+  display: block;
+  width: 100%;
+  max-width: 390px;
+  max-height: 580px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(75, 30, 20, 0.13);
+}
+
+/* RIGHT CONTENT */
+.chocolate-coaching-content {
+  min-width: 0;
+}
+
+.chocolate-coaching-label {
+  display: inline-block;
+  color: #9b1830;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.chocolate-coaching-content h2 {
+  margin: 0 0 18px;
+  color: #452016;
+  font-size: clamp(30px, 3.2vw, 43px);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.chocolate-coaching-content h2 span {
+  display: block;
+  color: #a51d36;
+}
+
+.chocolate-coaching-content > p {
+  color: #6d5a51;
+  font-size: 16px;
+  line-height: 1.85;
+  margin: 0 0 22px;
+}
+
+.chocolate-coaching-features {
+  display: grid;
+  gap: 13px;
+  margin-bottom: 25px;
+  color: #49352d;
+  font-size: 15px;
+}
+
+.chocolate-coaching-features div {
+  line-height: 1.5;
+}
+
+/* COURSE PRICE */
+.chocolate-coaching-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 15px 20px;
+  margin-bottom: 22px;
+  border-left: 4px solid #a51d36;
+  border-radius: 8px;
+  background: #fff0e5;
+}
+
+.chocolate-coaching-price > span {
+  font-size: 13px;
+  color: #73574a;
+}
+
+.chocolate-coaching-price strong {
+  color: #9b1830;
+  font-size: 30px;
+  line-height: 1.3;
+}
+
+.chocolate-coaching-price small {
+  color: #73574a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* WHATSAPP BUTTON */
+.chocolate-coaching-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 23px;
+  border: none;
+  border-radius: 50px;
+  background: #941b2c;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.chocolate-coaching-button:hover {
+  background: #741323;
+  transform: translateY(-2px);
+}
+
+.chocolate-coaching-note {
+  display: block;
+  margin-top: 15px;
+  color: #876b5d;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* TABLETS AND MOBILE */
+@media (max-width: 768px) {
+  .chocolate-coaching-section {
+    padding: 40px 18px;
+  }
+
+  .chocolate-coaching-container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .chocolate-coaching-image img {
+    max-width: 320px;
+    max-height: 480px;
+  }
+
+  .chocolate-coaching-content h2 {
+    font-size: 32px;
+  }
+
+  .chocolate-coaching-content > p {
+    font-size: 15px;
+  }
+
+  .chocolate-coaching-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 380px) {
+  .chocolate-coaching-content h2 {
+    font-size: 28px;
+  }
+
+  .chocolate-coaching-features {
+    font-size: 14px;
+  }
+}

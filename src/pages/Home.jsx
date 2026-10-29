@@ -17,6 +17,8 @@ import oatsLaddu from "../images/oats-laddu-140kb.png";
 import milletLaddu from "../images/millet-laddu-140kb.png";
 import dryFruitLaddu from "../images/dry-fruit-laddu-140kb.jpg";
 import chocolateCoursePoster from "../images/chocolate_making_course_poster_hd.jpg";
+import festiveDiwali from "../images/festive-diwali.jpeg";
+import giftingImage from "../images/gifting-image.jpeg";
 
 
 const whatsappNumber = "918341921521";
@@ -291,6 +293,7 @@ function Home() {
 
 
 
+
         {/* HERO VISUAL */}
 
         <div className="hero-visual">
@@ -344,6 +347,50 @@ function Home() {
         </div>
 
       </section>
+
+
+
+      {/* FESTIVE GIFTING SECTION */}
+          <section className="festive-promotions">
+            <div className="festive-promotions-heading">
+              <span>🎁 FESTIVE COLLECTION</span>
+              <h2>Celebrate Every Moment with Homemade Goodness</h2>
+              <p>
+                Thoughtful gifts, delicious chocolates and healthy
+                treats made with love for your special occasions.
+              </p>
+            </div>
+
+            <div className="festive-promotions-grid">
+              <a
+                className="festive-poster-card"
+                href="https://wa.me/918341921521?text=Hi%20M%20%26%20Y%20Home%20Made%20Foods!%20I%20am%20interested%20in%20festival%20gifting."
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={giftingImage}
+                  alt="Festival gifting and customised homemade gift boxes"
+                  loading="lazy"
+                />
+                <span>Enquire About Festival Gifts →</span>
+              </a>
+
+              <a
+                className="festive-poster-card"
+                href="https://wa.me/918341921521?text=Hi%20M%20%26%20Y%20Home%20Made%20Foods!%20I%20am%20interested%20in%20Diwali%20healthy%20return%20gifts."
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={festiveDiwali}
+                  alt="Diwali healthy return gifts from M & Y Homemade Foods"
+                  loading="lazy"
+                />
+                <span>Order Diwali Return Gifts →</span>
+              </a>
+            </div>
+          </section>
 
 
 

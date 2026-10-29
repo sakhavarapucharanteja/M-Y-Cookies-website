@@ -4438,3 +4438,90 @@ footer {
     font-size: 14px;
   }
 }
+
+
+
+
+
+
+
+.festive-promotions {
+  padding: 55px 24px;
+  background: #fff8ef;
+}
+
+.festive-promotions-heading {
+  max-width: 760px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.festive-promotions-heading > span {
+  color: #941b2c;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.festive-promotions-heading h2 {
+  color: #452016;
+  font-size: clamp(26px, 3.5vw, 38px);
+  margin: 12px 0;
+}
+
+.festive-promotions-heading p {
+  color: #73574a;
+  line-height: 1.7;
+}
+
+.festive-promotions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.festive-poster-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 8px 25px rgba(70, 35, 20, 0.10);
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.festive-poster-card:hover {
+  transform: translateY(-4px);
+}
+
+.festive-poster-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #fffaf3;
+}
+
+.festive-poster-card span {
+  padding: 15px 10px;
+  background: #941b2c;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .festive-promotions {
+    padding: 38px 15px;
+  }
+
+  .festive-promotions-grid {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    gap: 22px;
+  }
+}

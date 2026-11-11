@@ -1,7 +1,12 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./AdminLogin.css";
+
+const API_BASE_URL = (
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"
+).replace(/\/+$/, "");
 
 function AdminLogin() {
   const navigate = useNavigate();
@@ -18,17 +23,21 @@ function AdminLogin() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${API_BASE_URL}/api/auth/login`,
         { email, password }
       );
 
       localStorage.setItem("adminToken", response.data.token);
-      localStorage.setItem("adminInfo", JSON.stringify(response.data.admin));
+      localStorage.setItem(
+        "adminInfo",
+        JSON.stringify(response.data.admin)
+      );
 
       navigate("/admin");
     } catch (err) {
       setError(
-        err.response?.data?.message || "Login failed. Please try again."
+        err.response?.data?.message ||
+          "Login failed. Please try again."
       );
     } finally {
       setLoading(false);

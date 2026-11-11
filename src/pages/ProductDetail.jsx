@@ -1,3 +1,6 @@
+
+import { useEffect, useState } from "react";
+
 import {
   useParams,
   useNavigate,
@@ -7,357 +10,84 @@ import {
   MessageCircle,
   Phone,
 } from "lucide-react";
+import "./ProductDetail.css";
 
-import ragiLaddu from "../images/ragi-laddu-140kb.png";
-import oatsLaddu from "../images/oats-laddu-140kb.png";
-import milletLaddu from "../images/millet-laddu-140kb.png";
-import dryFruitLaddu from "../images/dry-fruit-laddu-140kb.jpg";
-
-// DRY FRUITS CHOCOLATE IMAGES
-import kunafa from "../images/kunafa-140kb.png";
-import dryFruitchocolateMango from "../images/Dry-fruit-chocolate-mango-140kb.jpg";
-import dryFruitchocolateStrawberry from "../images/Dry-fruit-chocolate-strawberry-140kb.jpg";
-import dryFruitchocolatechocolate from "../images/Dry-fruit-chocolate-choco-140kb.jpg";
-
-/* NEW PRODUCT IMAGES */
-import dryFruitsDonut from "../images/dry-fruits-donut-140kb.png";
-import datesChocolate from "../images/dates-chocolate-140kb.png";
-import paniPuri from "../images/pani-puri-140kb.png";
-import ragiMultigrainCookies from "../images/ragi-multigrain-cookie.png";
-import Dosa from "../images/dosa_140kb.jpg";
-import Punugulu from "../images/punugulu_140kb.jpg";
-import VegSandwich from "../images/veg_sandwich_140kb.jpg";
-
-import multyNutritionPowder from "../images/multy-nutrition-powder.jpeg";
-
+const API_URL = "http://localhost:5000/api/products";
+const IMAGE_BASE_URL = "http://localhost:5000";
 const whatsappNumber = "918341921521";
-
-const products = [
-
-  // HEALTHY LADDUS
-
-  {
-    id: "ragi-laddu",
-    name: "Ragi Laddu",
-    category: "Healthy Laddus",
-    image: ragiLaddu,
-    description: "Wholesome homemade ragi laddus made with care.",
-    prices: [
-      {
-        weight: "250 g",
-        price: "225",
-      },
-      {
-        weight: "500 g",
-        price: "400",
-      },
-      {
-        weight: "1 kg",
-        price: "800",
-      },
-    ],
-  },
-
-  {
-    id: "oats-laddu",
-    name: "Oats Laddu",
-    category: "Healthy Laddus",
-    image: oatsLaddu,
-    description: "A delicious and healthy homemade treat.",
-    prices: [
-      {
-        weight: "250 g",
-        price: "225",
-      },
-      {
-        weight: "500 g",
-        price: "400",
-      },
-      {
-        weight: "1 kg",
-        price: "800",
-      },
-    ],
-  },
-
-  {
-    id: "millet-laddu",
-    name: "Millet Laddu",
-    category: "Healthy Laddus",
-    image: milletLaddu,
-    description: "Nutritious millet goodness in every bite.",
-    prices: [
-      {
-        weight: "250 g",
-        price: "250",
-      },
-      {
-        weight: "500 g",
-        price: "450",
-      },
-      {
-        weight: "1 kg",
-        price: "900",
-      },
-    ],
-  },
-
-  {
-    id: "dry-fruit-laddu",
-    name: "Dry Fruits Laddu",
-    category: "Healthy Laddus",
-    image: dryFruitLaddu,
-    description: "Rich dry fruits blended into a premium sweet.",
-    prices: [
-      {
-        weight: "250 g",
-        price: "250",
-      },
-      {
-        weight: "500 g",
-        price: "450",
-      },
-      {
-        weight: "1 kg",
-        price: "900",
-      },
-    ],
-  },
-
-
-  // CHOCOLATES
-
-  {
-    id: "kunafa-chocolate",
-    name: "Kunafa Chocolate",
-    category: "Chocolates",
-    price: "₹100 pieces 3",
-    image: kunafa,
-    description: "A delicious fusion of kunafa and chocolate.",
-  },
-
-
-  // DRY FRUITS CHOCOLATES
-
-  {
-    id: "dry-fruits-chocolate-mango",
-    name: "Dry Fruits Chocolate with Mango Flavor",
-    category: "Dry Fruits Chocolates",
-    price: "₹30 Piece",
-    image: dryFruitchocolateMango,
-    description:
-      "Delicious dry fruits chocolate with a rich and fruity mango flavor.",
-  },
-
-  {
-    id: "dry-fruits-chocolate-strawberry",
-    name: "Dry Fruits Chocolate with Strawberry Flavor",
-    category: "Dry Fruits Chocolates",
-    price: "₹30 Piece",
-    image: dryFruitchocolateStrawberry,
-    description:
-      "Delicious dry fruits chocolate with a sweet strawberry flavor.",
-  },
-
-  {
-    id: "dry-fruits-chocolate-chocolate",
-    name: "Dry Fruits Chocolate with Chocolate Flavor",
-    category: "Dry Fruits Chocolates",
-    price: "₹30 Piece",
-    image: dryFruitchocolatechocolate,
-    description:
-      "Rich and delicious dry fruits chocolate with an extra chocolate flavor.",
-  },
-
-
-  // DRY FRUITS DONUT
-
-  {
-    id: "dry-fruits-donut",
-    name: "Dry Fruits Donut",
-    category: "Dry Fruits Chocolates",
-    price: "₹80  piece",
-    image: dryFruitsDonut,
-    description:
-      "Delicious chocolate dry fruits donuts topped with colourful sprinkles.",
-  },
-
-
-  // DATES CHOCOLATE
-
-  {
-    id: "dates-chocolate",
-    name: "Dates Chocolate",
-    category: "Dry Fruits Chocolates",
-    price: "₹100  pieces 5",
-    image: datesChocolate,
-    description:
-      "Rich dates coated with delicious chocolate and topped with crunchy dry fruits.",
-  },
-
-
-    // Multy Nutrition Powder
-    {
-    id: "multy-nutrition-powder",
-    name: "Multy Nutrition Powder",
-    category: "Healthy Nutrition",
-    image: multyNutritionPowder,
-    description:
-      "Homemade multi-nutrition powder prepared with a blend of traditional ingredients.",
-    prices: [
-      {
-        weight: "100 g",
-        price: "100",
-      },
-      {
-        weight: "200 g",
-        price: "200",
-      },
-      {
-        weight: "300 g",
-        price: "300",
-      },
-    ],
-  },
-
-
-  //Cookies
-
-  {
-    id: "ragi-multigrain-cookies",
-
-    name: "Ragi & Multi Grain Cookies",
-
-    category: "Cookies",
-
-    image: ragiMultigrainCookies,
-
-    description:
-      "Wholesome homemade cookies made with ragi and a delicious blend of multiple grains.",
-
-    prices: [
-      {
-        weight: "250 g",
-        price: "199",
-      },
-      {
-        weight: "500 g",
-        price: "389",
-      },
-      {
-        weight: "1 kg",
-        price: "779",
-      },
-    ],
-  },
-
-
-
-  // SNACKS
-
-
-  {
-    id: "dosa",
-
-    name: "Dosa",
-
-    category: "Tiffins & Snacks",
-
-    image: Dosa,
-
-    description:
-      "Freshly prepared homemade dosa, crispy on the outside and soft inside.",
-
-    prices: [
-      {
-        weight: "1 Plate",
-        price: "40",
-      },
-    ],
-  },
-
-  {
-    id: "punugulu",
-
-    name: "Punugulu",
-
-    category: "Tiffins & Snacks",
-
-    image: Punugulu,
-
-    description:
-      "Crispy and delicious homemade punugulu, perfect as a tasty evening snack.",
-
-    prices: [
-      {
-        weight: "1 Plate",
-        price: "50",
-      },
-    ],
-  },
-
-  {
-    id: "veg-sandwich",
-
-    name: "Veg Sandwich",
-
-    category: "Tiffins & Snacks",
-
-    image: VegSandwich,
-
-    description:
-      "Fresh and delicious homemade veg sandwich prepared with flavorful vegetables.",
-
-    prices: [
-      {
-        weight: "1 Piece",
-        price: "75",
-      },
-    ],
-  },
-
-  {
-    id: "pani-puri",
-    name: "Pani Puri",
-    category: "Snacks",
-    price: "₹50 single plate",
-    image: paniPuri,
-    description:
-      "Fresh and delicious homemade pani puri with tasty filling and flavourful pani.",
-  },
-
-];
-
 
 function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const product = products.find(
-    (item) => item.id === id
-  );
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  if (!product) {
-    return (
-      <div className="product-not-found">
-        <h2>Product not found</h2>
+  // Fetch the selected product from MongoDB
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        setProduct(null);
 
-        <button
-          className="primary-btn"
-          onClick={() => navigate("/products")}
-        >
-          Back to Products
-        </button>
-      </div>
-    );
-  }
+        const response = await fetch(
+          `${API_URL}/${encodeURIComponent(id)}`
+        );
 
+        if (response.status === 404) {
+          setError("Product not found");
+          return;
+        }
 
+        if (!response.ok) {
+          throw new Error("Failed to fetch product");
+        }
+
+        const data = await response.json();
+
+        setProduct(data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        setError("Unable to load this product. Please try again.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (id) {
+      fetchProduct();
+    }
+  }, [id]);
+
+  // Build image URL
+  const getImageUrl = (image) => {
+    if (!image) {
+      return "/placeholder-product.png";
+    }
+
+    if (
+      image.startsWith("http://") ||
+      image.startsWith("https://")
+    ) {
+      return image;
+    }
+
+    return `${IMAGE_BASE_URL}${image.startsWith("/") ? "" : "/"}${image}`;
+  };
+
+  // WhatsApp ordering
   const orderProduct = () => {
+    if (!product) return;
+
     let priceDetails = "";
 
-    // PRODUCTS WITH MULTIPLE WEIGHT OPTIONS
-    if (product.prices) {
+    // Products with multiple weight options
+    if (
+      Array.isArray(product.prices) &&
+      product.prices.length > 0
+    ) {
       priceDetails = product.prices
         .map(
           (item) =>
@@ -366,11 +96,12 @@ function ProductDetail() {
         .join("\n");
     }
 
-    // PRODUCTS WITH SINGLE PRICE / QUANTITY
-    else {
-      priceDetails = `• ${product.price}`;
+    // Products with a single price
+    else if (product.price !== undefined && product.price !== null) {
+      priceDetails = `• ₹${product.price}`;
+    } else {
+      priceDetails = "Please confirm the price";
     }
-
 
     const message = `Hi M & Y Home Made Foods! 👋
 
@@ -384,17 +115,43 @@ ${priceDetails}
 Please share more details.`;
 
     window.open(
-      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-        message
-      )}`,
-      "_blank"
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer"
     );
   };
 
+  // Loading state
+  if (loading) {
+    return (
+      <div className="product-not-found">
+        <h2>Loading product...</h2>
+      </div>
+    );
+  }
+
+  // Error or missing product
+  if (error || !product) {
+    return (
+      <div className="product-not-found">
+        <h2>{error || "Product not found"}</h2>
+
+        <button
+          className="primary-btn"
+          onClick={() => navigate("/products")}
+        >
+          Back to Products
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="product-detail-page">
+
       <div className="product-detail-container">
+
+        {/* BACK BUTTON */}
 
         <button
           className="back-home-btn"
@@ -403,50 +160,47 @@ Please share more details.`;
           ← Back to Products
         </button>
 
-
         <div className="product-detail-card">
 
           {/* PRODUCT IMAGE */}
+
           <div className="product-detail-image">
 
             <div className="detail-category">
               {product.category}
             </div>
 
-
-            {/* SHOW IMAGE IF AVAILABLE */}
             {product.image ? (
               <img
-                src={product.image}
+                src={getImageUrl(product.image)}
                 alt={product.name}
               />
             ) : (
               <div className="product-emoji-image">
-                {product.emoji}
+                🍪
               </div>
             )}
 
           </div>
 
-
           {/* PRODUCT INFORMATION */}
+
           <div className="product-detail-info">
 
             <span className="detail-eyebrow">
               HOMEMADE WITH LOVE ❤️
             </span>
 
-
             <h1>{product.name}</h1>
-
 
             <p className="detail-description">
               {product.description}
             </p>
 
-
             {/* MULTIPLE PRICE OPTIONS */}
-            {product.prices ? (
+
+            {Array.isArray(product.prices) &&
+            product.prices.length > 0 ? (
 
               <div className="detail-price">
 
@@ -454,20 +208,18 @@ Please share more details.`;
                   Available Sizes
                 </span>
 
-
                 <div className="price-options">
 
-                  {product.prices.map((item) => (
+                  {product.prices.map((item, index) => (
 
                     <div
                       className="price-option"
-                      key={item.weight}
+                      key={`${item.weight}-${index}`}
                     >
 
                       <span className="price-weight">
                         {item.weight}
                       </span>
-
 
                       <strong className="price-amount">
                         ₹{item.price}
@@ -484,6 +236,7 @@ Please share more details.`;
             ) : (
 
               /* SINGLE PRICE */
+
               <div className="detail-price">
 
                 <span className="price-title">
@@ -491,16 +244,20 @@ Please share more details.`;
                 </span>
 
                 <strong className="single-price">
-                  {product.price}
+                  {product.price !== undefined &&
+                  product.price !== null
+                    ? `₹${product.price}`
+                    : "Contact for price"}
                 </strong>
 
               </div>
 
             )}
 
-
             {/* FEATURES */}
+
             <div className="detail-features">
+
               <div>✓ Freshly Prepared</div>
 
               <div>✓ 100% Homemade</div>
@@ -508,33 +265,37 @@ Please share more details.`;
               <div>
                 ✓ Made with Quality Ingredients
               </div>
+
             </div>
 
-
             {/* ACTION BUTTONS */}
+
             <div className="detail-action-buttons">
 
               <button
                 className="detail-order-btn"
                 onClick={orderProduct}
               >
+
                 <MessageCircle size={22} />
 
                 <span>
                   Order on WhatsApp
                 </span>
-              </button>
 
+              </button>
 
               <a
                 href="tel:+918341921521"
                 className="detail-call-btn"
               >
+
                 <Phone size={22} />
 
                 <span>
                   Call Now
                 </span>
+
               </a>
 
             </div>
@@ -544,6 +305,7 @@ Please share more details.`;
         </div>
 
       </div>
+
     </div>
   );
 }

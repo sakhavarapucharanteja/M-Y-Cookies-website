@@ -4525,3 +4525,34 @@ footer {
     gap: 22px;
   }
 }
+
+
+
+.form-status {
+  margin: 15px 0;
+  padding: 13px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.form-status.success {
+  background: #eaf7ed;
+  color: #236b36;
+}
+
+.form-status.error {
+  background: #fff0ef;
+  color: #b42318;
+}
+
+.form-status.loading {
+  background: #f5f1e9;
+  color: #6b5035;
+}
+
+.contact-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

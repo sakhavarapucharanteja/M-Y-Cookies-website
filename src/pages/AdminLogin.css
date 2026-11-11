@@ -1,0 +1,175 @@
+
+/* Admin Login Page */
+
+.admin-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+
+  background: linear-gradient(
+    135deg,
+    #f5f8f0 0%,
+    #edf5e8 50%,
+    #f9faf5 100%
+  );
+
+  font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+/* Login Card */
+
+.admin-login form {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 35px;
+
+  background: #ffffff;
+  border: 1px solid #e5eadf;
+  border-radius: 20px;
+
+  box-shadow: 0 15px 45px rgba(35, 75, 45, 0.10);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Heading */
+
+.admin-login h2 {
+  margin: 0 0 10px;
+  text-align: center;
+
+  color: #234b2d;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.admin-login h2::before {
+  content: "🥗";
+  display: block;
+  font-size: 42px;
+  margin-bottom: 14px;
+}
+
+/* Error Message */
+
+.login-error {
+  margin: 12px 0 18px;
+  padding: 12px 14px;
+
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Input Fields */
+
+.admin-login input {
+  width: 100%;
+  box-sizing: border-box;
+
+  margin-top: 18px;
+  padding: 14px 16px;
+
+  border: 1px solid #d9e2d5;
+  border-radius: 10px;
+
+  background: #fbfcfa;
+  color: #26352a;
+
+  font-size: 15px;
+  outline: none;
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.admin-login input::placeholder {
+  color: #9ca89a;
+}
+
+.admin-login input:focus {
+  border-color: #3f8b4d;
+  background: #ffffff;
+
+  box-shadow: 0 0 0 3px rgba(63, 139, 77, 0.12);
+}
+
+/* Login Button */
+
+.admin-login button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #2f713b;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 15px rgba(47, 113, 59, 0.18);
+
+  transition: background 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-login button:hover:not(:disabled) {
+  background: #245b2e;
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(47, 113, 59, 0.25);
+}
+
+.admin-login button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.admin-login button:disabled {
+  background: #91b598;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive Design */
+
+@media (max-width: 480px) {
+  .admin-login {
+    padding: 16px;
+  }
+
+  .admin-login form {
+    padding: 30px 22px;
+    border-radius: 16px;
+  }
+
+  .admin-login h2 {
+    font-size: 24px;
+  }
+
+  .admin-login h2::before {
+    font-size: 36px;
+  }
+
+  .admin-login input {
+    padding: 13px;
+    font-size: 14px;
+  }
+
+  .admin-login button {
+    padding: 13px;
+    font-size: 15px;
+  }
+}

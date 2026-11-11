@@ -12,10 +12,10 @@ import {
 
 import { Link, useNavigate } from "react-router-dom";
 
-import ragiLaddu from "../images/ragi-laddu-140kb.png";
-import oatsLaddu from "../images/oats-laddu-140kb.png";
-import milletLaddu from "../images/millet-laddu-140kb.png";
-import dryFruitLaddu from "../images/dry-fruit-laddu-140kb.jpg";
+// import ragiLaddu from "../images/ragi-laddu-140kb.png";
+// import oatsLaddu from "../images/oats-laddu-140kb.png";
+// import milletLaddu from "../images/millet-laddu-140kb.png";
+// import dryFruitLaddu from "../images/dry-fruit-laddu-140kb.jpg";
 import chocolateCoursePoster from "../images/chocolate_making_course_poster_hd.jpg";
 import festiveDiwali from "../images/festive-diwali.jpeg";
 import giftingImage from "../images/gifting-image.jpeg";
@@ -24,47 +24,76 @@ import giftingImage from "../images/gifting-image.jpeg";
 const whatsappNumber = "918341921521";
 
 
-const products = [
-  {
-    id: "ragi-laddu",
-    name: "Ragi Laddu",
-    category: "Healthy Laddus",
-    price: "225",
-    image: ragiLaddu,
-    description: "Wholesome homemade ragi laddus made with care.",
-  },
+// const products = [
+//   {
+//     id: "ragi-laddu",
+//     name: "Ragi Laddu",
+//     category: "Healthy Laddus",
+//     price: "225",
+//     image: ragiLaddu,
+//     description: "Wholesome homemade ragi laddus made with care.",
+//   },
 
-  {
-    id: "oats-laddu",
-    name: "Oats Laddu",
-    category: "Healthy Laddus",
-    price: "225",
-    image: oatsLaddu,
-    description: "A delicious and healthy homemade treat.",
-  },
+//   {
+//     id: "oats-laddu",
+//     name: "Oats Laddu",
+//     category: "Healthy Laddus",
+//     price: "225",
+//     image: oatsLaddu,
+//     description: "A delicious and healthy homemade treat.",
+//   },
 
-  {
-    id: "millet-laddu",
-    name: "Millet Laddu",
-    category: "Healthy Laddus",
-    price: "250",
-    image: milletLaddu,
-    description: "Nutritious millet goodness in every bite.",
-  },
+//   {
+//     id: "millet-laddu",
+//     name: "Millet Laddu",
+//     category: "Healthy Laddus",
+//     price: "250",
+//     image: milletLaddu,
+//     description: "Nutritious millet goodness in every bite.",
+//   },
 
-  {
-    id: "dry-fruit-laddu",
-    name: "Dry Fruit Laddu",
-    category: "Healthy Laddus",
-    price: "250",
-    image: dryFruitLaddu,
-    description: "Rich dry fruits blended into a premium sweet.",
-  },
-];
+//   {
+//     id: "dry-fruit-laddu",
+//     name: "Dry Fruit Laddu",
+//     category: "Healthy Laddus",
+//     price: "250",
+//     image: dryFruitLaddu,
+//     description: "Rich dry fruits blended into a premium sweet.",
+//   },
+// ];
 
 
 function Home() {
   const navigate = useNavigate();
+
+  const [products, setProducts] = useState([]);
+  const [productsLoading, setProductsLoading] = useState(true);
+  const [productsError, setProductsError] = useState("");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/products"
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch products");
+        }
+
+        const data = await response.json();
+
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setProductsError("Unable to load products. Please try again later.");
+      } finally {
+        setProductsLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const [showEventPopup, setShowEventPopup] = useState(false);
 
@@ -525,30 +554,52 @@ function Home() {
 
         <div className="product-grid">
 
+        {productsLoading && (
+          <p className="products-message">
+            Loading products...
+          </p>
+        )}
 
-          {products.map((product) => (
+        {productsError && (
+          <p className="products-message">
+            {productsError}
+          </p>
+        )}
+
+        {!productsLoading &&
+          !productsError &&
+          products.length === 0 && (
+            <p className="products-message">
+              No products available at the moment.
+            </p>
+          )}
+
+        {!productsLoading &&
+          !productsError &&
+          products.map((product) => (
 
             <div
               className="product-card"
-              key={product.id}
-              onClick={() =>
-                navigate(`/product/${product.id}`)
-              }
+              key={product._id}
+              onClick={() => navigate(`/product/${product._id}`)}
               style={{
                 cursor: "pointer",
               }}
             >
-
 
               {/* PRODUCT IMAGE */}
 
               <div className="product-image">
 
                 <img
-                  src={product.image}
+                  src={
+                    product.image
+                      ? `http://localhost:5000${product.image}`
+                      : "/placeholder-product.png"
+                  }
                   alt={product.name}
+                  loading="lazy"
                 />
-
 
                 <div className="product-category">
                   {product.category}
@@ -556,26 +607,19 @@ function Home() {
 
               </div>
 
-
-
               {/* PRODUCT INFO */}
 
               <div className="product-info">
-
 
                 <h3>
                   {product.name}
                 </h3>
 
-
                 <p>
                   {product.description}
                 </p>
 
-
-
                 <div className="product-bottom">
-
 
                   <div className="price">
 
@@ -589,24 +633,16 @@ function Home() {
 
                   </div>
 
-
-
                   <button
                     className="product-order-btn"
                     onClick={(e) => {
-
                       e.stopPropagation();
 
-                      navigate(
-                        `/product/${product.id}`
-                      );
-
+                      navigate(`/product/${product._id}`);
                     }}
                   >
 
-                    <MessageCircle
-                      size={18}
-                    />
+                    <MessageCircle size={18} />
 
                     View
 
@@ -618,9 +654,10 @@ function Home() {
 
             </div>
 
-          ))}
+          ))
+        }
 
-        </div>
+      </div>
 
 
 

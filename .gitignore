@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+
+# Environment variables and secrets
+.env
+.env.*
+server/.env
+server/.env.*
+
+
+# Backend uploaded images
+server/uploads/

@@ -1,3 +1,4 @@
+
 import {
   MessageCircle,
   Phone,
@@ -6,9 +7,13 @@ import {
   User,
   Mail,
 } from "lucide-react";
-import { useState } from "react";
+
+import { useEffect, useRef, useState } from "react";
 
 const phoneNumber = "+918341921521";
+
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxLf7y7E9-JB-w58qce3LI11mhx_ZETio3w8x_yHS0p7gTBcEUTsdbCtuUsB6PANzMocA/exec";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -19,63 +24,45 @@ function Contact() {
     message: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState("");
+  const [statusType, setStatusType] = useState("");
 
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const pendingRequestRef = useRef(null);
 
-      const handleSubmit = (e) => {
-        e.preventDefault();
+  // Handle response from Google Apps Script
+  useEffect(() => {
+    const handleResponse = (event) => {
+      const pending = pendingRequestRef.current;
 
-        const GOOGLE_SCRIPT_URL =
-          "https://script.google.com/macros/s/AKfycbwgv_kHxFeM4tc3BnU9a9aTDtJHLoilYL2C9DTZKVbDDGN73IJK7cf66mXOdX24wWUG6Q/exec";
+      if (!pending) {
+        return;
+      }
 
-        // Create hidden iframe
-        const iframe = document.createElement("iframe");
-        iframe.name = "hidden_iframe";
-        iframe.style.display = "none";
-        document.body.appendChild(iframe);
+      const response = event.data;
 
-        // Create temporary form
-        const form = document.createElement("form");
+      if (
+        response?.type !== "MY_ENQUIRY_SUCCESS" &&
+        response?.type !== "MY_ENQUIRY_ERROR"
+      ) {
+        return;
+      }
 
-        form.method = "POST";
-        form.action = GOOGLE_SCRIPT_URL;
-        form.target = "hidden_iframe";
-        form.style.display = "none";
+      clearTimeout(pending.timeoutId);
 
-        // Add form fields
-        const fields = {
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          enquiryType: formData.enquiry,
-          message: formData.message,
-        };
+      pending.form.remove();
+      pending.iframe.remove();
 
-        Object.entries(fields).forEach(([key, value]) => {
-          const input = document.createElement("input");
+      pendingRequestRef.current = null;
+      setSubmitting(false);
 
-          input.type = "hidden";
-          input.name = key;
-          input.value = value;
+      if (response.type === "MY_ENQUIRY_SUCCESS") {
+        setStatus(
+          "Thank you! Your enquiry has been submitted successfully. Please check your email for confirmation."
+        );
 
-          form.appendChild(input);
-        });
+        setStatusType("success");
 
-        document.body.appendChild(form);
-
-        // Submit to Google Apps Script
-        form.submit();
-
-        // Show success message
-        alert("Thank you! Your enquiry has been submitted.");
-
-        // Reset form
         setFormData({
           name: "",
           phone: "",
@@ -83,13 +70,89 @@ function Contact() {
           enquiry: "General Enquiry",
           message: "",
         });
+      } else {
+        setStatus(
+          response.message ||
+            "Unable to submit your enquiry. Please try again."
+        );
 
-        // Clean up
-        setTimeout(() => {
-          form.remove();
-          iframe.remove();
-        }, 3000);
-      };
+        setStatusType("error");
+      }
+    };
+
+    window.addEventListener("message", handleResponse);
+
+    return () => {
+      window.removeEventListener("message", handleResponse);
+
+      if (pendingRequestRef.current) {
+        clearTimeout(pendingRequestRef.current.timeoutId);
+        pendingRequestRef.current.form.remove();
+        pendingRequestRef.current.iframe.remove();
+        pendingRequestRef.current = null;
+      }
+    };
+  }, []);
+
+  // Handle form inputs
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+    setStatus("");
+    setStatusType("");
+  };
+
+  // Submit customer enquiry
+  
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  setSubmitting(true);
+  setStatus("Submitting your enquiry...");
+
+  try {
+    const fields = new URLSearchParams({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      enquiryType: formData.enquiry,
+      message: formData.message,
+    });
+
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: fields,
+    });
+
+    setStatus(
+      "Thank you! Your enquiry has been submitted successfully. Please check your email for confirmation."
+    );
+
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      enquiry: "General Enquiry",
+      message: "",
+    });
+
+  } catch (error) {
+    console.error("Contact form error:", error);
+
+    setStatus(
+      "Unable to submit your enquiry. Please try again or contact us directly."
+    );
+  } finally {
+    setSubmitting(false);
+  }
+};
+
 
   return (
     <main className="contact-page">
@@ -111,7 +174,6 @@ function Contact() {
         </div>
       </section>
 
-
       {/* CONTACT DETAILS */}
       <section className="contact-details-section">
         <div className="contact-details-grid">
@@ -130,7 +192,6 @@ function Contact() {
             </div>
           </a>
 
-
           <div className="contact-detail-card">
             <div className="contact-detail-icon">
               <MapPin size={25} />
@@ -141,7 +202,6 @@ function Contact() {
               <p>Hyderabad, India</p>
             </div>
           </div>
-
 
           <div className="contact-detail-card">
             <div className="contact-detail-icon">
@@ -157,10 +217,8 @@ function Contact() {
         </div>
       </section>
 
-
       {/* CONTACT FORM */}
       <section className="contact-form-section">
-
         <div className="contact-form-layout">
 
           {/* LEFT SIDE */}
@@ -200,7 +258,6 @@ function Contact() {
             </div>
           </div>
 
-
           {/* FORM */}
           <form
             className="contact-form"
@@ -229,7 +286,6 @@ function Contact() {
                 </div>
               </div>
 
-
               <div className="form-group">
                 <label htmlFor="phone">
                   Phone Number *
@@ -252,12 +308,11 @@ function Contact() {
 
             </div>
 
-
             <div className="form-row">
 
               <div className="form-group">
                 <label htmlFor="email">
-                  Email Address
+                  Email Address *
                 </label>
 
                 <div className="input-wrapper">
@@ -270,10 +325,10 @@ function Contact() {
                     placeholder="Enter your email"
                     value={formData.email}
                     onChange={handleChange}
+                    required
                   />
                 </div>
               </div>
-
 
               <div className="form-group">
                 <label htmlFor="enquiry">
@@ -297,7 +352,6 @@ function Contact() {
 
             </div>
 
-
             <div className="form-group">
               <label htmlFor="message">
                 Your Message *
@@ -314,19 +368,31 @@ function Contact() {
               />
             </div>
 
+            {/* STATUS MESSAGE */}
+            {status && (
+              <div
+                className={`form-status ${
+                  submitting ? "loading" : "success"
+                }`}
+                role="status"
+              >
+                {status}
+              </div>
+            )}
 
+            {/* SUBMIT BUTTON */}
             <button
               type="submit"
               className="contact-submit-btn"
+              disabled={submitting}
             >
               <Send size={20} />
-              Send Enquiry
+              {submitting ? "Submitting..." : "Send Enquiry"}
             </button>
 
           </form>
 
         </div>
-
       </section>
 
     </main>

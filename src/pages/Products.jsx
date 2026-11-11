@@ -1,197 +1,12 @@
+
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import "./Products.css";
 
-import ragiLaddu from "../images/ragi-laddu-140kb.png";
-import oatsLaddu from "../images/oats-laddu-140kb.png";
-import milletLaddu from "../images/millet-laddu-140kb.png";
-import dryFruitLaddu from "../images/dry-fruit-laddu-140kb.jpg";
-import kunafa from "../images/kunafa-140kb.png";
+const API_URL = "http://localhost:5000/api/products";
+const IMAGE_BASE_URL = "http://localhost:5000";
 
-import dryFruitchocolateMango from "../images/Dry-fruit-chocolate-mango-140kb.jpg";
-import dryFruitchocolateStrawberry from "../images/Dry-fruit-chocolate-strawberry-140kb.jpg";
-import dryFruitchocolatechocolate from "../images/Dry-fruit-chocolate-choco-140kb.jpg";
-
-import dryFruitsDonut from "../images/dry-fruits-donut-140kb.png";
-import datesChocolate from "../images/dates-chocolate-140kb.png";
-import paniPuri from "../images/pani-puri-140kb.png";
-import ragiMultigrainCookies from "../images/ragi-multigrain-cookie.png";
-import Dosa from "../images/dosa_140kb.jpg";
-import Punugulu from "../images/punugulu_140kb.jpg";
-import VegSandwich from "../images/veg_sandwich_140kb.jpg";
-
-import multyNutritionPowder from "../images/multy-nutrition-powder.jpeg";
-
-
-const products = [
-
-  // HEALTHY LADDUS
-  {
-    id: "ragi-laddu",
-    name: "Ragi Laddu",
-    category: "Healthy Laddus",
-    price: "225",
-    image: ragiLaddu,
-    description: "Wholesome homemade ragi laddus made with care.",
-  },
-
-  {
-    id: "oats-laddu",
-    name: "Oats Laddu",
-    category: "Healthy Laddus",
-    price: "225",
-    image: oatsLaddu,
-    description: "A delicious and healthy homemade treat.",
-  },
-
-  {
-    id: "millet-laddu",
-    name: "Millet Laddu",
-    category: "Healthy Laddus",
-    price: "250",
-    image: milletLaddu,
-    description: "Nutritious millet goodness in every bite.",
-  },
-
-  {
-    id: "dry-fruit-laddu",
-    name: "Dry Fruit Laddu",
-    category: "Healthy Laddus",
-    price: "250",
-    image: dryFruitLaddu,
-    description: "Rich dry fruits blended into a premium sweet.",
-  },
-
-
-  // CHOCOLATES
-  {
-    id: "kunafa-chocolate",
-    name: "Kunafa Chocolate",
-    category: "Chocolates",
-    price: "100",
-    image: kunafa,
-    description: "A delicious fusion of kunafa and chocolate.",
-  },
-
-
-  // DRY FRUITS CHOCOLATES
-  {
-    id: "dry-fruits-chocolate-mango",
-    name: "Dry Fruits Chocolate with Mango Flavor",
-    category: "Dry Fruits Chocolates",
-    price: "30",
-    image: dryFruitchocolateMango,
-    description:
-      "Delicious dry fruits chocolate with a rich and fruity mango flavor.",
-  },
-
-  {
-    id: "dry-fruits-chocolate-strawberry",
-    name: "Dry Fruits Chocolate with Strawberry Flavor",
-    category: "Dry Fruits Chocolates",
-    price: "30",
-    image: dryFruitchocolateStrawberry,
-    description:
-      "Delicious dry fruits chocolate with a sweet strawberry flavor.",
-  },
-
-  {
-    id: "dry-fruits-chocolate-chocolate",
-    name: "Dry Fruits Chocolate with Chocolate Flavor",
-    category: "Dry Fruits Chocolates",
-    price: "30",
-    image: dryFruitchocolatechocolate,
-    description:
-      "Rich and delicious dry fruits chocolate with an extra chocolate flavor.",
-  },
-
-  {
-    id: "dry-fruits-donut",
-    name: "Dry Fruits Donut",
-    category: "Dry Fruits Chocolates",
-    price: "80",
-    image: dryFruitsDonut,
-    description:
-      "Delicious chocolate dry fruits donuts topped with colourful sprinkles.",
-  },
-
-  {
-    id: "dates-chocolate",
-    name: "Dates Chocolate",
-    category: "Dry Fruits Chocolates",
-    price: "100",
-    image: datesChocolate,
-    description:
-      "Rich and delicious dates coated with premium chocolate and crunchy toppings.",
-  },
-
-
-    // MULTY NUTRITION POWDER
-  {
-    id: "multy-nutrition-powder",
-    name: "Multy Nutrition Powder",
-    category: "Healthy Nutrition",
-    price: "100",
-    image: multyNutritionPowder,
-    description:
-      "Homemade multi-nutrition powder prepared with a blend of traditional ingredients for everyday nutrition.",
-  },
-
-  // Cookies
-  {
-    id: "ragi-multigrain-cookies",
-    name: "Ragi & Multi Grain Cookies",
-    category: "Cookies",
-    price: "199",
-    image: ragiMultigrainCookies,
-    description:"Wholesome homemade cookies made with ragi and a delicious blend of multiple grains.",
-  },
-
-
-  // SNACKS
-
-  {
-    id: "dosa",
-    name: "Dosa",
-    category: "Tiffins & Snacks",
-    price: "40",
-    image: Dosa,
-    description:
-      "Freshly prepared homemade dosa, crispy on the outside and soft on the inside.",
-  },
-
-  {
-    id: "punugulu",
-    name: "Punugulu",
-    category: "Tiffins & Snacks",
-    price: "50",
-    image: Punugulu,
-    description:
-      "Crispy and delicious homemade punugulu prepared fresh and perfect as a tasty snack.",
-  },
-
-  {
-    id: "veg-sandwich",
-    name: "Veg Sandwich",
-    category: "Tiffins & Snacks",
-    price: "75",
-    image: VegSandwich,
-    description:
-      "Fresh and delicious homemade veg sandwich prepared with flavorful vegetables.",
-  },
-  {
-    id: "pani-puri",
-    name: "Pani Puri",
-    category: "Tiffins & Snacks",
-    price: "50",
-    image: paniPuri,
-    description:
-      "Fresh and delicious homemade pani puri prepared with tasty fillings and flavourful pani.",
-  },
-
-];
-
-
-// CATEGORY ORDER
 const categoryOrder = [
   "Healthy Laddus",
   "Healthy Nutrition",
@@ -201,13 +16,38 @@ const categoryOrder = [
   "Tiffins & Snacks",
 ];
 
-
 function Products() {
-
   const navigate = useNavigate();
 
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  // GROUP PRODUCTS BY CATEGORY
+  // Fetch all products from MongoDB
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch products");
+        }
+
+        const data = await response.json();
+
+        setProducts(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setError("Unable to load products. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  // Group products by category
   const groupedProducts = categoryOrder.map((category) => ({
     category,
     products: products.filter(
@@ -215,10 +55,43 @@ function Products() {
     ),
   }));
 
+  // Include categories that are not listed in categoryOrder
+  const additionalCategories = [
+    ...new Set(
+      products
+        .map((product) => product.category)
+        .filter(
+          (category) =>
+            category && !categoryOrder.includes(category)
+        )
+    ),
+  ];
+
+  const allGroupedProducts = [
+    ...groupedProducts,
+    ...additionalCategories.map((category) => ({
+      category,
+      products: products.filter(
+        (product) => product.category === category
+      ),
+    })),
+  ].filter((group) => group.products.length > 0);
+
+  // Build image URL
+  const getImageUrl = (image) => {
+    if (!image) {
+      return "/placeholder-product.png";
+    }
+
+    if (image.startsWith("http://") || image.startsWith("https://")) {
+      return image;
+    }
+
+    return `${IMAGE_BASE_URL}${image.startsWith("/") ? "" : "/"}${image}`;
+  };
 
   return (
     <div className="products-page">
-
 
       {/* PAGE HEADER */}
 
@@ -240,130 +113,131 @@ function Products() {
 
       </section>
 
-
-
       {/* PRODUCTS BY CATEGORY */}
 
       <section className="products-page-content">
 
-        {groupedProducts.map(
-          ({ category, products: categoryProducts }) => (
+        {loading && (
+          <p className="products-message">
+            Loading products...
+          </p>
+        )}
 
-            <div
-              className="product-category-section"
-              key={category}
-            >
+        {error && (
+          <p className="products-message">
+            {error}
+          </p>
+        )}
 
-              {/* CATEGORY TITLE */}
+        {!loading && !error && products.length === 0 && (
+          <p className="products-message">
+            No products available at the moment.
+          </p>
+        )}
 
-              <div className="product-category-header">
+        {!loading &&
+          !error &&
+          allGroupedProducts.map(
+            ({ category, products: categoryProducts }) => (
 
-                <h2>{category}</h2>
+              <div
+                className="product-category-section"
+                key={category}
+              >
 
-                <div className="category-line"></div>
+                {/* CATEGORY TITLE */}
 
-              </div>
+                <div className="product-category-header">
 
+                  <h2>{category}</h2>
 
+                  <div className="category-line"></div>
 
-              {/* CATEGORY PRODUCTS */}
+                </div>
 
-              <div className="product-grid">
+                {/* CATEGORY PRODUCTS */}
 
-                {categoryProducts.map((product) => (
+                <div className="product-grid">
 
-                  <div
-                    className="product-card"
-                    key={product.id}
-                    onClick={() =>
-                      navigate(`/product/${product.id}`)
-                    }
-                    style={{ cursor: "pointer" }}
-                  >
+                  {categoryProducts.map((product) => (
 
+                    <div
+                      className="product-card"
+                      key={product._id}
+                      onClick={() =>
+                        navigate(`/product/${product._id}`)
+                      }
+                      style={{ cursor: "pointer" }}
+                    >
 
-                    {/* PRODUCT IMAGE */}
+                      {/* PRODUCT IMAGE */}
 
-                    <div className="product-image">
+                      <div className="product-image">
 
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                      />
+                        <img
+                          src={getImageUrl(product.image)}
+                          alt={product.name}
+                          loading="lazy"
+                        />
 
-                      <div className="product-category">
-                        {product.category}
+                        <div className="product-category">
+                          {product.category}
+                        </div>
+
                       </div>
 
-                    </div>
+                      {/* PRODUCT INFORMATION */}
 
+                      <div className="product-info">
 
+                        <h3>{product.name}</h3>
 
-                    {/* PRODUCT INFORMATION */}
+                        <p>{product.description}</p>
 
-                    <div className="product-info">
+                        <div className="product-bottom">
 
-                      <h3>{product.name}</h3>
+                          <div className="price">
 
-                      <p>{product.description}</p>
+                            <span>
+                              Starting from
+                            </span>
 
+                            <strong>
+                              ₹{product.price}
+                            </strong>
 
+                          </div>
 
-                      <div className="product-bottom">
+                          <button
+                            className="product-order-btn"
+                            onClick={(e) => {
+                              e.stopPropagation();
 
-                        <div className="price">
+                              navigate(
+                                `/product/${product._id}`
+                              );
+                            }}
+                          >
 
-                          <span>
-                            {product.price === "Contact for price"
-                              ? "Price"
-                              : "Starting from"}
-                          </span>
+                            <MessageCircle size={18} />
 
-                          <strong>
-                            {product.price === "Contact for price"
-                              ? "Contact for price"
-                              : `₹${product.price}`}
-                          </strong>
+                            View
+
+                          </button>
 
                         </div>
 
-
-
-                        <button
-                          className="product-order-btn"
-                          onClick={(e) => {
-
-                            e.stopPropagation();
-
-                            navigate(
-                              `/product/${product.id}`
-                            );
-
-                          }}
-                        >
-
-                          <MessageCircle size={18} />
-
-                          View
-
-                        </button>
-
                       </div>
 
                     </div>
 
-                  </div>
+                  ))}
 
-                ))}
+                </div>
 
               </div>
-
-            </div>
-
-          )
-        )}
-
-
+            )
+          )}
 
         {/* BACK BUTTON */}
 

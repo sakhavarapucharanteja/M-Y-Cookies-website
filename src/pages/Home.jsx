@@ -23,6 +23,19 @@ import giftingImage from "../images/gifting-image.jpeg";
 
 const whatsappNumber = "918341921521";
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+
+const getImageUrl = (image) => {
+  if (!image) return "/placeholder-product.png";
+
+  if (image.startsWith("http://") || image.startsWith("https://")) {
+    return image;
+  }
+
+  return `${API_BASE_URL}${image}`;
+};
+
 
 // const products = [
 //   {
@@ -74,7 +87,7 @@ function Home() {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/products"
+          `${API_BASE_URL}/api/products`
         );
 
         if (!response.ok) {
@@ -592,13 +605,13 @@ function Home() {
               <div className="product-image">
 
                 <img
-                  src={
-                    product.image
-                      ? `http://localhost:5000${product.image}`
-                      : "/placeholder-product.png"
-                  }
+                  src={getImageUrl(product.image)}
                   alt={product.name}
                   loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "/placeholder-product.png";
+                  }}
                 />
 
                 <div className="product-category">

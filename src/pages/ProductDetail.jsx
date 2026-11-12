@@ -12,8 +12,13 @@ import {
 } from "lucide-react";
 import "./ProductDetail.css";
 
-const API_URL = "http://localhost:5000/api/products";
-const IMAGE_BASE_URL = "http://localhost:5000";
+const SERVER_URL = (
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"
+).replace(/\/+$/, "");
+
+const API_URL = `${SERVER_URL}/api/products`;
+const IMAGE_BASE_URL = SERVER_URL;
+
 const whatsappNumber = "918341921521";
 
 function ProductDetail() {
@@ -174,6 +179,10 @@ Please share more details.`;
               <img
                 src={getImageUrl(product.image)}
                 alt={product.name}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "/placeholder-product.png";
+                }}
               />
             ) : (
               <div className="product-emoji-image">

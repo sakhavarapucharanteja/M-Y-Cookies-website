@@ -4,8 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import "./Products.css";
 
-const API_URL = "http://localhost:5000/api/products";
-const IMAGE_BASE_URL = "http://localhost:5000";
+const SERVER_URL = (
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"
+).replace(/\/+$/, "");
+
+const API_URL = `${SERVER_URL}/api/products`;
+const IMAGE_BASE_URL = SERVER_URL;
 
 const categoryOrder = [
   "Healthy Laddus",
@@ -178,6 +182,10 @@ function Products() {
                           src={getImageUrl(product.image)}
                           alt={product.name}
                           loading="lazy"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = "/placeholder-product.png";
+                          }}
                         />
 
                         <div className="product-category">
@@ -203,7 +211,13 @@ function Products() {
                             </span>
 
                             <strong>
-                              ₹{product.price}
+                              ₹{
+                                Array.isArray(product.prices) && product.prices.length > 0
+                                  ? Math.min(
+                                      ...product.prices.map((item) => Number(item.price))
+                                    )
+                                  : product.price ?? "Contact"
+                              }
                             </strong>
 
                           </div>

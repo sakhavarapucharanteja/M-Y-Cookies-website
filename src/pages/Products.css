@@ -401,14 +401,18 @@
 }
 
 
-/* Mobile - Keep 2-column grid clean without button overflow */
+
+
+/* =================================
+   MOBILE FIX (<= 600px)
+================================= */
 @media (max-width: 600px) {
   .products-page {
-    padding-top: 85px; /* Fixes navbar covering the top heading */
+    padding-top: 85px;
   }
 
   .products-page-header {
-    padding: 20px 16px 22px;
+    padding: 20px 18px 22px;
   }
 
   .products-page-header h1 {
@@ -421,7 +425,7 @@
   }
 
   .products-page-content {
-    padding: 0 16px;
+    padding: 0 18px;
   }
 
   .product-category-section {
@@ -432,77 +436,85 @@
     font-size: 20px;
   }
 
+  /* 1 full-width card per row so single items don't leave a blank half-screen */
   .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: 1fr !important;
+    gap: 16px;
   }
 
   .product-card {
-    max-width: none;
-    border-radius: 14px;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .product-image {
-    height: 135px;
+    width: 100% !important;
+    height: 195px !important;
   }
 
-  .product-category {
-    top: 8px;
-    left: 8px;
-    padding: 4px 9px;
-    font-size: 9px;
-  }
-
+  /* Lock inner content strictly inside the card width */
   .product-info {
-    padding: 11px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .product-info h3,
+  .product-info p {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
   }
 
   .product-info h3 {
-    font-size: 14px;
-    margin-bottom: 5px !important;
+    font-size: 17px !important;
   }
 
   .product-info p {
-    font-size: 11.5px;
-    margin-bottom: 12px !important;
+    font-size: 13px !important;
+    margin-bottom: 14px !important;
   }
 
-  /* Stack price on top & full-width button below so nothing clips */
+  /* Clean side-by-side price & button inside full-width mobile card */
   .product-bottom {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 8px;
-    padding-top: 10px;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+    padding-top: 12px !important;
+    box-sizing: border-box !important;
   }
 
   .price {
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
+    width: auto !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
 
   .price span {
-    font-size: 10px;
+    font-size: 11px !important;
   }
 
   .price strong {
-    font-size: 16px;
+    font-size: 19px !important;
   }
 
   .product-order-btn {
-    width: 100%;
-    padding: 8px 10px;
-    font-size: 12px;
-  }
-}
-
-/* Very small phones */
-@media (max-width: 360px) {
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .product-image {
-    height: 185px;
+    width: auto !important;
+    flex-shrink: 0 !important;
+    padding: 10px 18px !important;
+    font-size: 13px !important;
   }
 }

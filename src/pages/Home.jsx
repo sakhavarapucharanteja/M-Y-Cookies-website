@@ -19,6 +19,7 @@ import { Link, useNavigate } from "react-router-dom";
 import chocolateCoursePoster from "../images/chocolate_making_course_poster_hd.jpg";
 import festiveDiwali from "../images/festive-diwali.jpeg";
 import giftingImage from "../images/gifting-image.jpeg";
+import celebrationBox from "../images/celebration-box.jpeg";
 
 
 const whatsappNumber = "918341921521";
@@ -148,6 +149,22 @@ function Home() {
 
     const message =
       "Hi M & Y Home Made Foods! 👋 I would like to enquire about party/event orders. I am interested in placing an order for my occasion.";
+
+    window.open(
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  };
+
+
+  /* =========================
+     CHRISTMAS BOX WHATSAPP
+  ========================= */
+
+  const openChristmasWhatsApp = () => {
+
+    const message =
+      "Hi M & Y Home Made Foods! 🎄 I would like to order the Christmas Choco Celebration Box. Please share customization options (how many chocolates per box), pricing, and delivery details.";
 
     window.open(
       `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
@@ -384,6 +401,65 @@ function Home() {
 
         </div>
 
+      </section>
+
+
+
+      {/* =====================================================
+          CHRISTMAS CHOCO CELEBRATION BOX SECTION
+      ===================================================== */}
+
+      <section className="chocolate-coaching-section">
+        <div className="chocolate-coaching-container">
+
+          {/* LEFT SIDE - IMAGE */}
+          <div className="chocolate-coaching-image">
+            <img
+              src={celebrationBox}
+              alt="Christmas Choco Celebration Box"
+              loading="lazy"
+            />
+          </div>
+
+          {/* RIGHT SIDE - CONTENT */}
+          <div className="chocolate-coaching-content">
+            <span className="chocolate-coaching-label">
+              🎄 LIMITED HOLIDAY SPECIAL
+            </span>
+
+            <h2>
+              Christmas Choco
+              <span> Celebration Box!</span>
+            </h2>
+
+            <p>
+              Handcrafted luxury chocolates curated for holiday gifting,
+              Secret Santa, and festive family celebrations. Choose your own
+              piece count and customize how many chocolates go in each box!
+            </p>
+
+            <div className="chocolate-coaching-features">
+              <div>✓ Truffles • Fudge • Bark • Festive Bonbons</div>
+              <div>✓ Customize how many chocolates go in one box</div>
+              <div>✓ Gift-ready festive packaging & budget friendly</div>
+              <div>✓ Bulk & corporate gifting orders available</div>
+            </div>
+
+            <button
+              className="chocolate-coaching-button"
+              onClick={openChristmasWhatsApp}
+            >
+              <MessageCircle size={20} />
+              Order Now on WhatsApp
+              <ArrowRight size={19} />
+            </button>
+
+            <small className="chocolate-coaching-note">
+              ✨ Custom box counts available • Pre-order now for guaranteed Christmas delivery
+            </small>
+          </div>
+
+        </div>
       </section>
 
 

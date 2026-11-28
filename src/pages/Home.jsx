@@ -162,97 +162,93 @@ function Home() {
 
 
       {/* =====================================================
-      PARTY & EVENT POPUP
+      CHRISTMAS CHOCO CELEBRATION BOX POPUP
       ===================================================== */}
 
       {showEventPopup && (
-        <div className="event-popup-overlay">
+  <div className="event-popup-overlay">
 
-          <div className="event-popup">
+    <div className="event-popup">
 
-            {/* CLOSE BUTTON */}
+      {/* CLOSE BUTTON */}
 
-              <button
-                className="event-popup-close"
-                onClick={() => setShowEventPopup(false)}
-                aria-label="Close"
-              >
-                <X size={22} />
-              </button>
-
-
-              {/* POPUP ICON */}
-
-              <div className="event-popup-icon">
-                🎉
-              </div>
+      <button
+        className="event-popup-close"
+        onClick={() => setShowEventPopup(false)}
+        aria-label="Close"
+      >
+        <X size={22} />
+      </button>
 
 
-              {/* MAIN MESSAGE */}
+      {/* POPUP ICON */}
 
-              <span className="event-popup-eyebrow">
-                PARTY & EVENT ORDERS
-              </span>
-
-
-              <h2>
-                SMALL — WE ACCEPT ALL ORDERS!
-              </h2>
+      <div className="event-popup-icon">
+        🎄
+      </div>
 
 
-              <p className="event-popup-main-text">
-                Food • Snacks • Tiffins • Meals • Beverages
-              </p>
+      {/* MAIN MESSAGE */}
+
+      <span className="event-popup-eyebrow">
+        LIMITED HOLIDAY SPECIAL
+      </span>
 
 
-              <p className="event-popup-description">
-                Perfect for parties, functions, gatherings,
-                birthdays and special occasions.
-              </p>
+      <h2>
+        CHRISTMAS CHOCO CELEBRATION BOX
+      </h2>
 
 
-              {/* ORDER TYPES */}
-
-              <div className="event-popup-items">
-
-                <span>🍽️ Food & Meals</span>
-
-                <span>🥪 Snacks & Tiffins</span>
-
-                <span>☕ Beverages</span>
-
-                <span>🍫 Sweets & Treats</span>
-
-              </div>
+      <p className="event-popup-main-text">
+        Truffles • Fudge • Bark • Festive Bonbons
+      </p>
 
 
-              <p className="event-popup-note">
-                ✨ Custom quantities available
-              </p>
+      <p className="event-popup-description">
+        Handcrafted luxury chocolates curated for holiday gifting,
+        Secret Santa, and festive family celebrations. Choose your own
+        piece count and customize how many chocolates go in each box!
+      </p>
 
 
-              {/* WHATSAPP */}
+      {/* PRODUCT IMAGE */}
 
-              <button
-                className="event-popup-whatsapp"
-                onClick={openEventWhatsApp}
-              >
-                <MessageCircle size={20} />
-                Enquire on WhatsApp
-              </button>
+      <div className="event-popup-image-wrapper">
+        <img
+          src="/src/images/christmas-choco-box.jpeg"
+          className="event-popup-image"
+        />
+      </div>
 
 
-              <button
-                className="event-popup-later"
-                onClick={() => setShowEventPopup(false)}
-              >
-                Maybe Later
-              </button>
+      <p className="event-popup-note">
+        ✨ Custom box counts available • Pre-order now for guaranteed Christmas delivery & Budget Friendly
+      </p>
 
-          </div>
 
-        </div>
-      )}
+      {/* WHATSAPP */}
+
+      <button
+        className="event-popup-whatsapp"
+        onClick={openEventWhatsApp}
+      >
+        <MessageCircle size={20} />
+        Order Now on WhatsApp
+      </button>
+
+
+      <button
+        className="event-popup-later"
+        onClick={() => setShowEventPopup(false)}
+      >
+        Maybe Later
+      </button>
+
+    </div>
+
+  </div>
+)}
 
 
       {/* =====================================================

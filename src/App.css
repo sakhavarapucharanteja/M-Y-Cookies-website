@@ -4556,3 +4556,32 @@ footer {
   opacity: 0.65;
   cursor: not-allowed;
 }
+
+
+/* Keep the modal inside the screen height */
+.event-popup {
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* Constrain the image wrapper */
+.event-popup-image-wrapper {
+  margin: 12px auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f5f0; /* Subtle neutral background if image is narrower */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Show the full image without stretching or overflowing */
+.event-popup-image {
+  width: auto;
+  max-width: 100%;
+  max-height: 220px; /* Keeps the top title and bottom WhatsApp button visible */
+  object-fit: contain;
+  display: block;
+}
